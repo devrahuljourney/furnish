@@ -79,7 +79,7 @@ export default function Navbar() {
       </div>
 
       {/* Navbar with categories */}
-      <div className={`w-[100%] bg-transparent hover:bg-[#F6F0ED]   flex justify-between items-center py-4 px-[5%] ${prevScrollPos === 0 ? "bg-transparent" : "bg-[#F6F0ED]" }  ${visible ? "top-0  " : " absolute -top-[200px] "  }`}>
+      <div className={`w-[100%] bg-blur-500 hover:bg-[#F6F0ED]   flex justify-between items-center py-4 px-[5%] ${prevScrollPos === 0 ? "bg-transparent" : "bg-[#F6F0ED]" }  ${visible ? "top-0  " : " absolute -top-[200px] "  }`}>
         {/* Logo */}
         <div className="w-[20%] flex  ">
           <img src={logo} alt="Logo" width="200px" height="400px" />

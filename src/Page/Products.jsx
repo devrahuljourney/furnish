@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Product from '../components/Products/Product';
+import FAQ from '../components/FAQ';
+import Footer from './Footer';
 
 const dummyProduct = {
   _id: "2",
@@ -18,14 +20,14 @@ const dummyProduct = {
 };
 
 export default function Products() {
-  const { id } = useParams(); // Capture ID from URL params
+  const { id } = useParams(); 
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // Simulating fetch with dummy data for now, replace it with actual API call
-        setProduct(dummyProduct); // Replace with actual fetched product
+        
+        setProduct(dummyProduct); 
       } catch (error) {
         console.error('Error fetching product:', error);
       }
@@ -37,6 +39,8 @@ export default function Products() {
   return (
     <div>
       {product ? <Product product={product} /> : <p>Loading...</p>}
+      <FAQ/>
+      <Footer/>
     </div>
   );
 }

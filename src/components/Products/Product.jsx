@@ -1,19 +1,114 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
+import wood1 from "../../assets/wood1.avif";
+import wood2 from "../../assets/wood2.avif";
+import wood3 from "../../assets/wood4.avif"; // Ensure this filename is correct
+import Instructions from '../Instruction';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addToCart } from '../../slices/cartSlice';
 
 export default function Product({ product }) {
   const { images, title, price, size, woodFinish } = product;
 
+  const [currImageIndex, setCurrImageIndex] = useState(0);
+  const [currWood, setCurrWood] = useState(0); 
+  const [currSize, setCurrSize] = useState(size[0]);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart); // Ensure this matches your state structure
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product)); 
+    console.log('Current Cart:', cart); // Verify cart state
+    navigate("/cart");
+  };
+
+  const handleNext = () => {
+    setCurrImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrevious = () => {
+    setCurrImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrevious,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+    delta: 10,
+  });
+
   return (
-    <div>
-      <h2>{title}</h2>
-      <div>
-        {images.map((image, index) => (
-          <img key={index} src={image} alt={`${title} - view ${index + 1}`} style={{ width: '200px', margin: '10px' }} />
-        ))}
+    <div className='w-full mt-[9%] md:p-[2%] h-height flex md:flex-row flex-col justify-between items-start gap-6'>
+      <div className='w-[70%] flex md:flex-row h-full flex-col-reverse gap-3 justify-start items-start'>
+        {/* Thumbnail Image Buttons */}
+        <div className='flex flex-col justify-start items-start gap-3 w-[20%]'>
+          {images.map((image, index) => (
+            <button
+              key={index}
+              className={`md:w-[100px] md:h-[100px] border-2 ${
+                currImageIndex === index ? 'border-blue-500' : 'border-transparent'
+              }`}
+              onClick={() => setCurrImageIndex(index)}
+            >
+              <img className='object-cover w-full h-full' src={image} alt={`image ${index}`} />
+            </button>
+          ))}
+        </div>
+
+        {/* Current Image Display */}
+        <div {...handlers} className='flex-grow w-[80%]'>
+          <img src={images[currImageIndex]} className='w-full h-full object-contain' alt='Selected' />
+        </div>
       </div>
-      <p>Price: ₹{price}</p>
-      <p>Available Sizes: {size.join(', ')}</p>
-      <p>Wood Finishes: {woodFinish.join(', ')}</p>
+
+      {/* Product Details */}
+      <div className='w-[30%] flex flex-col justify-center items-start gap-4'>
+        <p className='text-[19px] md:text-[22px] font-bold'>{title}</p>
+        <p className='md:text-[20px] text-[17px] text-gray-500 font-semibold'>₹ {price}</p>
+
+        {/* Size Selection */}
+        <div className='flex flex-col gap-2 justify-center items-start'>
+          <p className='text-[13px]'>Select Your Size</p>
+          <div className='flex gap-2'>
+            {size.map((data) => (
+              <button 
+                key={data} 
+                onClick={() => setCurrSize(data)} 
+                className={`border-2 p-2 ${data === currSize ? 'border-blue-500' : 'border-gray-500'}`}
+              >
+                {data}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Wood Finish Selection */}
+        <div>
+          <p>Select Wood Finish: {woodFinish[currWood]}</p>
+          <div className='flex gap-2'>
+            <button onClick={() => setCurrWood(0)}>
+              <img src={wood1} alt="Wood 1" className={`w-[50px] h-[50px] ${currWood === 0 ? 'border border-blue-500' : ''}`} />
+            </button>
+            <button onClick={() => setCurrWood(1)}>
+              <img src={wood2} alt="Wood 2" className={`w-[50px] h-[50px] ${currWood === 1 ? 'border border-blue-500' : ''}`} />
+            </button>
+            <button onClick={() => setCurrWood(2)}>
+              <img src={wood3} alt="Wood 3" className={`w-[50px] h-[50px] ${currWood === 2 ? 'border border-blue-500' : ''}`} />
+            </button>
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div className='flex flex-col gap-2 w-[60%]'>
+          <button onClick={handleAddToCart} className='button-48'>ADD TO CART</button>
+          <button className='button-48'>BUY IT NOW</button>
+        </div>
+        <Instructions/>
+      </div>
     </div>
   );
 }
