@@ -7,7 +7,7 @@ export default function Navmenu() {
 
     const [hoveredCategory, setHoveredCategory] = useState(null); 
   return (
-    <div className="flex space-x-8 ">
+    <div className="flex relative space-x-8 ">
           <Link to="/" className="hover:text-gray-700">Home</Link>
 
           {/* Categories */}
@@ -22,11 +22,11 @@ export default function Navmenu() {
 
               {/* Subcategories */}
               {hoveredCategory === index && (
-                <div className="absolute -translate-x-[40%]  rounded-[5%] min-w-[230px] p-2" onMouseEnter={() => setHoveredCategory(index)} >
+                <div className="absolute" onMouseEnter={() => setHoveredCategory(index)} >
                   {ele.subcategories.map((sub, subIndex) => (
                     <Link
                       key={subIndex}
-                      to={`/products/${sub.subcategory}`}
+                      to={`/collections/${ele.category}`}
                       className="block px-4 py-2 bg-gray-200 h-full hover:text-opacity-95 "
                     >
                       {sub.subcategory}

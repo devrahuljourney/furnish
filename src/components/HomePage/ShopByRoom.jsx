@@ -37,7 +37,7 @@ export default function ShopByRoom() {
             
             {/* View Product Button */}
             <Link to={`/products/${subcategoryData[currIndex].subcategory}`} > 
-              <button className=' bg-black p-3 text-white rounded-lg ' > View Product </button> 
+              <button className=' button-48 ' > View Product </button> 
             </Link>
           </div>
         </div>

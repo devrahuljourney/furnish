@@ -1,9 +1,11 @@
 export const data = [
   {
     "category": "Bedroom",
+    
     "subcategories": [
       {
         "subcategory": "Beds",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -53,6 +55,7 @@ export const data = [
       },
       {
         "subcategory": "Dressers",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -70,6 +73,7 @@ export const data = [
       },
       {
         "subcategory": "Nightstands",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -92,6 +96,7 @@ export const data = [
     "subcategories": [
       {
         "subcategory": "Tables",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -114,6 +119,7 @@ export const data = [
     "subcategories": [
       {
         "subcategory": "Tables",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -136,6 +142,7 @@ export const data = [
     "subcategories": [
       {
         "subcategory": "Tables",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -158,6 +165,7 @@ export const data = [
     "subcategories": [
       {
         "subcategory": "Tables",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -180,6 +188,7 @@ export const data = [
     "subcategories": [
       {
         "subcategory": "Tables",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -202,6 +211,7 @@ export const data = [
     "subcategories": [
       {
         "subcategory": "Tables",
+        "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
         "products": [
           {
             "images": [
@@ -314,3 +324,39 @@ export const subcategoryData = [
   
 
 ]
+
+
+export const searchByCategory =   {
+  "subcategory": "Beds",
+  "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
+  "products": [
+    {
+      "_id":"1",
+      "images": [
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-b2b.webp?v=1722149741&width=800",
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-furnish.webp?v=1722149741&width=800",
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-in-india.webp?v=1722149741&width=800",
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-online-furniture.webp?v=1722149741&width=800"
+      ],
+      "title": "Modern Queen Bed",
+      "price": 45000,
+      "size": ["Queen", "King"],
+      "woodFinish": ["Teak", "Walnut", "Mahogany", "Oak"]
+    },
+    {
+      "_id":"2",
+      "images": [
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-b2b.webp?v=1722149741&width=800",
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-furnish.webp?v=1722149741&width=800",
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-in-india.webp?v=1722149741&width=800",
+        "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-online-furniture.webp?v=1722149741&width=800"
+      ],
+      "title": "Classic Wooden Bed",
+      "price": 55000,
+      "size": ["Queen", "King"],
+      "woodFinish": ["Teak", "Walnut", "Mahogany", "Oak"]
+    }
+  ]
+}
