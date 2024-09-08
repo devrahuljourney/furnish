@@ -59,7 +59,7 @@ export default function Navbar() {
   return (
     <div className={`w-full fixed z-10  `}>
       {/* Offer banner */}
-      <div className="flex   bg-nav-banner-color px-[20%] justify-evenly items-center p-2 w-[100%] ">
+      <div className="flex  h-[50px]  bg-nav-banner-color px-[20%] justify-evenly items-center p-2 w-[100%] ">
         <button
           onClick={() => setCurrentIndex((currIndex - 1 + bannerData.length) % bannerData.length)}
           className="mr-4 text-2xl"
@@ -84,20 +84,20 @@ export default function Navbar() {
       {/* Navbar with categories */}
       <div className={`w-[100%] bg-blur-500 hover:bg-[#F6F0ED]   flex justify-between items-center py-4 px-[5%] ${prevScrollPos === 0 ? "bg-transparent" : "bg-[#F6F0ED]" }  ${visible ? "top-0  " : " absolute -top-[200px] "  }`}>
         {/* Logo */}
-        <div className="w-[20%] flex  ">
+        <div className="md:w-[20%] w-[40%] flex  ">
           <img src={logo} alt="Logo" width="200px" height="400px" />
         </div>
 
         {/* Navigation links */}
-        <div className='w-[60%] relative  gap-3 flex flex-col justify-center items-center ' >
+        <div className='md:w-[60%]   gap-3 flex md:flex-col flex-row md:justify-center justify-end w-[60%]  md:items-center ' >
           <form onSubmit={submitHandler} className='flex  flex-row justify-between items-center  py-1 border-2 border-black rounded-lg px-4 w-[80%]' >
             <input onChange={(e) => setSearchData(e.target.value)} name="search" value={searchData} placeholder='Find your Design' className='w-[80%] hover:bg-[#F6F0ED] bg-transparent focus:outline-none ' />
             <button type='submit' className='w-[20%] flex justify-center items-center '  > <CiSearch /> </button>
           </form>
-          <Navmenu/>
+          <div className=' md:relative absolute  right-0 top-[45%] ' ><Navmenu/></div>
         </div>
 
-        <div className='flex w-[20%] justify-evenly p-9  ' >
+        <div className='flex w-[20%]  justify-evenly p-9  ' >
           <Link to={"/login"} > <CiUser style={{width:"22px", height:"22px"}} /> </Link>
           <button onClick={() => dispatch(openCart())}  > <IoCartOutline style={{width:"22px", height:"22px"}} /> </button>
         </div>

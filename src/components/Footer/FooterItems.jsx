@@ -18,7 +18,7 @@ export default function FooterItems() {
 
                     <div className='flex flex-col item-start gap-3 justify-center' >
                         <input className=' bg-transparent border-2 p-2 border-gray-400 ' type='text' name = "emaiL" placeholder="E-mail"  />
-                        <button className='button-48 w-[50%] ' >Subscribe</button>
+                        <button className='button-48 subscribe w-[50%] ' >Subscribe</button>
                     </div>
 
                     <div className='flex flex-row gap-5 item-start justify-start' >

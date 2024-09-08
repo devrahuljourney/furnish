@@ -13,23 +13,23 @@ export default function Collections() {
   }, []);
 
   return (
-    <div  className='flex flex-col gap-2'>
-      <div className='mt-[11%] w-full flex md:flex-row flex-col justify-start md:p-[2%] p-2 items-center gap-4'>
-      {data.map((product, index) => (
-        <Link 
-          className='md:w-[400px] md:h-[400px] w-[200px] h-[200px]' 
-          key={index} 
-          to={`/product/${product.title}/${product._id}`}>
-          <img 
-            className='w-full h-full object-cover' 
-            src={product.images[0]} 
-            alt={product.title} 
-          />
-        </Link>
-      ))}
+    <div className='flex w-full mt-[35%] md:mt-[11%] flex-col gap-4'>
+      <div className=' w-full flex md:flex-row flex-col item-center  justify-center  gap-4 p-4'>
+        {data.map((product, index) => (
+          <Link 
+            className='w-[100%] md:w-[30%] lg:w-[23%] h-auto' 
+            key={index} 
+            to={`/product/${product.title}/${product._id}`}>
+            <img 
+              className='w-full h-full object-cover rounded-lg shadow-lg' 
+              src={product.images[0]} 
+              alt={product.title} 
+            />
+          </Link>
+        ))}
       </div>
-
-      <Footer/>
+      
+      <Footer />
     </div>
   );
 }
