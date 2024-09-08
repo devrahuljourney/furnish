@@ -4,7 +4,8 @@ import { act } from "react";
 const initialState  = {
     cart : localStorage.getItem('cart') ? JSON.parse(localStorage.getItem("cart")) : [],
     total : localStorage.getItem('total') ? JSON.parse(localStorage.getItem("total")) : 0,
-    totalItems : localStorage.getItem("totalitems") ? JSON.parse(localStorage.getItem("totalItems")) : 0
+    totalItems : localStorage.getItem("totalitems") ? JSON.parse(localStorage.getItem("totalItems")) : 0,
+    cartOpen : false
 }
 
 const cartSlice = createSlice({
@@ -47,9 +48,12 @@ const cartSlice = createSlice({
             localStorage.removeItem("total")
             localStorage.removeItem("totalItems")
           },
+          openCart : (state) => {
+            state.cartOpen = !state.cartOpen
+          }
     }
 })
 
-export const { addToCart, removeFromCart, resetCart } = cartSlice.actions
+export const { addToCart, removeFromCart, resetCart, openCart } = cartSlice.actions
 
 export default cartSlice.reducer

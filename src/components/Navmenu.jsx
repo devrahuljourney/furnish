@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { data } from '../data/dummyData';
+import { useDispatch } from 'react-redux';
 
 
 export default function Navmenu() {
+
+  const dispatch = useDispatch();
 
     const [hoveredCategory, setHoveredCategory] = useState(null); 
   return (
@@ -22,12 +25,12 @@ export default function Navmenu() {
 
               {/* Subcategories */}
               {hoveredCategory === index && (
-                <div className="absolute" onMouseEnter={() => setHoveredCategory(index)} >
+                <div className="fixed bg-white rounded-lg p-4 -translate-x-10 " onMouseEnter={() => setHoveredCategory(index)} >
                   {ele.subcategories.map((sub, subIndex) => (
                     <Link
                       key={subIndex}
                       to={`/collections/${ele.category}`}
-                      className="block px-4 py-2 bg-gray-200 h-full hover:text-opacity-95 "
+                      className="block px-4 py-2 hover:text-gray-500  h-full hover:text-opacity-95 "
                     >
                       {sub.subcategory}
                     </Link>

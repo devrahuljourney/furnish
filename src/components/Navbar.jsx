@@ -7,6 +7,8 @@ import Navmenu from './Navmenu';
 import { CiSearch } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
+import { useDispatch } from 'react-redux';
+import { openCart } from '../slices/cartSlice';
 export default function Navbar() {
   const bannerData = ["5 year warranty", "Customization Available", "Free Delivery", "Return & Refund"];
   const [currIndex, setCurrentIndex] = useState(0);
@@ -18,6 +20,7 @@ export default function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
 
+   const dispatch = useDispatch();
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
     setVisible(prevScrollPos > currentScrollPos);
@@ -86,7 +89,7 @@ export default function Navbar() {
         </div>
 
         {/* Navigation links */}
-        <div className='w-[60%]  gap-3 flex flex-col justify-center items-center ' >
+        <div className='w-[60%] relative  gap-3 flex flex-col justify-center items-center ' >
           <form onSubmit={submitHandler} className='flex  flex-row justify-between items-center  py-1 border-2 border-black rounded-lg px-4 w-[80%]' >
             <input onChange={(e) => setSearchData(e.target.value)} name="search" value={searchData} placeholder='Find your Design' className='w-[80%] hover:bg-[#F6F0ED] bg-transparent focus:outline-none ' />
             <button type='submit' className='w-[20%] flex justify-center items-center '  > <CiSearch /> </button>
@@ -96,7 +99,7 @@ export default function Navbar() {
 
         <div className='flex w-[20%] justify-evenly p-9  ' >
           <Link to={"/login"} > <CiUser style={{width:"22px", height:"22px"}} /> </Link>
-          <Link to="/cart" > <IoCartOutline style={{width:"22px", height:"22px"}} /> </Link>
+          <button onClick={() => dispatch(openCart())}  > <IoCartOutline style={{width:"22px", height:"22px"}} /> </button>
         </div>
         
       </div>

@@ -6,7 +6,9 @@ import wood3 from "../../assets/wood4.avif"; // Ensure this filename is correct
 import Instructions from '../Instruction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addToCart } from '../../slices/cartSlice';
+import { addToCart, openCart } from '../../slices/cartSlice';
+import Cart from '../../Page/Cart';
+
 
 export default function Product({ product }) {
   const { images, title, price, size, woodFinish } = product;
@@ -17,13 +19,20 @@ export default function Product({ product }) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cart = useSelector((state) => state.cart); // Ensure this matches your state structure
+  const { cart, cartOpen } = useSelector((state) => state.cart);
 
-  const handleAddToCart = () => {
-    dispatch(addToCart(product)); 
-    console.log('Current Cart:', cart); // Verify cart state
-    navigate("/cart");
+const handleAddToCart = () => {
+  const productWithSelectedOptions = {
+    ...product,
+    selectedSize: currSize,
+    selectedWood: woodFinish[currWood],
+    price: product.price, 
   };
+  dispatch(addToCart(productWithSelectedOptions));
+  console.log('Current Cart:', cart);
+  dispatch(openCart());
+};
+
 
   const handleNext = () => {
     setCurrImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -42,7 +51,8 @@ export default function Product({ product }) {
   });
 
   return (
-    <div className='w-full mt-[9%] md:p-[2%] h-height flex md:flex-row flex-col justify-between items-start gap-6'>
+    <div className='w-full relative mt-[9%] md:p-[2%] h-height flex md:flex-row flex-col justify-between items-start gap-6'>
+     
       <div className='w-[70%] flex md:flex-row h-full flex-col-reverse gap-3 justify-start items-start'>
         {/* Thumbnail Image Buttons */}
         <div className='flex flex-col justify-start items-start gap-3 w-[20%]'>
@@ -109,6 +119,11 @@ export default function Product({ product }) {
         </div>
         <Instructions/>
       </div>
+      <div className= {` p-4 bg-nav-banner-color absolute md:w-[27%] h-screen w-[80%] transition-all duration-250 ease-in  ${cartOpen  ? "right-0" : "-right-[100%]"} `} >
+      
+         <Cart/>
+      
+     </div>
     </div>
   );
 }
