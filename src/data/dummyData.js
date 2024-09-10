@@ -235,6 +235,7 @@ export const data = [
 export const subcategoryData = [
   
     {
+      "_id":"1",
       "subcategory": "Beds",
       "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
       "products": [
@@ -267,6 +268,7 @@ export const subcategoryData = [
       ]
     },
     {
+      "_id":"2",
       "subcategory": "Wardrobes",
       "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
       "products": [
@@ -286,6 +288,7 @@ export const subcategoryData = [
       ]
     },
     {
+      "_id":"3",
       "subcategory": "Dressers",
       "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
       "products": [
@@ -304,6 +307,7 @@ export const subcategoryData = [
       ]
     },
     {
+      "_id":"3",
       "subcategory": "Nightstands",
       "thumbnail" : "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800", 
       "products": [

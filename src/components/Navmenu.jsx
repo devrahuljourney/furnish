@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { data } from '../data/dummyData';
+// import { data } from '../data/dummyData';
 import { useDispatch } from 'react-redux';
 import { HiMenu, HiX } from 'react-icons/hi';
 import Cart from '../Page/Cart';
@@ -8,7 +8,7 @@ import { openCart } from '../slices/cartSlice';
 import { IoCartOutline } from "react-icons/io5";
 
 
-export default function Navmenu() {
+export default function Navmenu({data}) {
   const dispatch = useDispatch();
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false); 
