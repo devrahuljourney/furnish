@@ -37,14 +37,8 @@ export default function Navbar() {
 
   useEffect(() => {
     console.log("CategoryData ", categoriesData)
-    if (!categoriesData) {
-      dispatch(fetchAllCategories());
-      setData(categoriesData);
-      console.log("CategoryData ", categoriesData)
-    } else {
-      setData(categoriesData);
-      console.log("CategoryData ", categoriesData)
-    }
+    dispatch(fetchAllCategories());
+    setData(categoriesData)
   }, [dispatch]);
 
   useEffect(() => {
@@ -75,7 +69,7 @@ export default function Navbar() {
           <IoIosArrowBack style={{ width: "18px" }} />
         </button>
         <p
-          className={`text-xl text-[13px] transition-all duration-500 ${
+          className={` text-[13px] transition-all duration-500 ${
             isAnimating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
           }`}
         >

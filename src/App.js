@@ -5,6 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './Page/HomePage';
 import Collections from './Page/Collections';
 import Products from './Page/Products';
+import { CheckmarkIcon } from 'react-hot-toast';
+import Checkout from './Page/Checkout';
 
 function App() {
   return (
@@ -12,8 +14,9 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={<HomePage/>} />
-          <Route path={`/collections/:Category`} element={<Collections/>} />
+          <Route path={`/collections/:subcategory/:id`} element={<Collections/>} />
           <Route path={`/product/:title/:id`}  element ={<Products/>} /> 
+          <Route path={`/checkout`} element = { <Checkout/>  } />
         </Routes>
     </div>
   );

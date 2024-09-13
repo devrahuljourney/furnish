@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { data } from '../data/dummyData';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { HiMenu, HiX } from 'react-icons/hi';
-import Cart from '../Page/Cart';
-import { openCart } from '../slices/cartSlice';
 import { IoCartOutline } from "react-icons/io5";
-
+import { openCart } from '../slices/cartSlice';
 
 export default function Navmenu({data}) {
   const dispatch = useDispatch();
   const [hoveredCategory, setHoveredCategory] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false); 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const { loading } = useSelector((state) => state.category); 
 
   return (
     <nav className="relative">
@@ -28,41 +27,44 @@ export default function Navmenu({data}) {
           <HiX style={{width:"25px", height:"25px"}} />
         </button>
         <ul className="space-y-4">
-        <button onClick={() => dispatch(openCart())}  > <IoCartOutline style={{width:"22px", height:"22px"}} /> </button>
+          <button onClick={() => dispatch(openCart())}><IoCartOutline style={{width:"22px", height:"22px"}} /></button>
           <li>
             <Link to="/" className="block py-2 hover:text-gray-700" onClick={() => setMenuOpen(false)}>Home</Link>
           </li>
 
-          {/* Categories */}
-          {data.map((ele, index) => (
-            <li key={index}>
-              <p
-                className="cursor-pointer py-2 hover:text-gray-700"
-                onClick={() => setHoveredCategory(hoveredCategory === index ? null : index)}
-              >
-                {ele.category}
-              </p>
+          {/* Loading indicator */}
+          {loading ? (
+            <li className="py-2">Loading categories...</li>
+          ) : (
+            data.slice(0, 6).map((ele, index) => ( 
+              <li key={index}>
+                <p
+                  className="cursor-pointer py-2 hover:text-gray-700"
+                  onClick={() => setHoveredCategory(hoveredCategory === index ? null : index)}
+                >
+                  {ele.category}
+                </p>
 
-              {/* Subcategories (displayed below the category when clicked on mobile) */}
-              {hoveredCategory === index && (
-                <ul className="pl-4 mt-2 space-y-2">
-                  {ele.subcategories.map((sub, subIndex) => (
-                    <li key={subIndex}>
-                      <Link
-                        to={`/collections/${ele.category}`}
-                        className="block px-4 py-2 hover:text-gray-500"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {sub.subcategory}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
+                {/* Subcategories (displayed below the category when clicked on mobile) */}
+                {hoveredCategory === index && (
+                  <ul className="pl-4 mt-2 space-y-2">
+                    {ele.subcategories.map((sub, subIndex) => (
+                      <li key={subIndex}>
+                        <Link
+                          to={`/collections/${ele.category}`}
+                          className="block px-4 py-2 hover:text-gray-500"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {sub.subcategory}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))
+          )}
         </ul>
-        
       </div>
 
       {/* Desktop Menu */}
@@ -70,31 +72,35 @@ export default function Navmenu({data}) {
         <Link to="/" className="hover:text-gray-700">Home</Link>
 
         {/* Categories with hover effect */}
-        {data.map((ele, index) => (
-          <div
-            key={index}
-            className="relative group"
-            onMouseEnter={() => setHoveredCategory(index)}
-            onMouseLeave={() => setHoveredCategory(null)}
-          >
-            <p className="hover:text-gray-700 cursor-pointer">{ele.category}</p>
+        {loading ? (
+          <p>Loading categories...</p>
+        ) : (
+          data.slice(0, 6).map((ele, index) => ( 
+            <div
+              key={index}
+              className="relative group"
+              onMouseEnter={() => setHoveredCategory(index)}
+              onMouseLeave={() => setHoveredCategory(null)}
+            >
+              <p className="hover:text-gray-700 cursor-pointer">{ele.name}</p>
 
-            {/* Subcategories on hover for desktop */}
-            {hoveredCategory === index && (
-              <div className="fixed bg-white rounded-lg p-4 shadow-lg mt-2">
-                {ele.subcategories.map((sub, subIndex) => (
-                  <Link
-                    key={subIndex}
-                    to={`/collections/${ele.category}`}
-                    className="block px-4 py-2 hover:text-gray-500"
-                  >
-                    {sub.subcategory}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+              {/* Subcategories on hover for desktop */}
+              {hoveredCategory === index && (
+                <div className="fixed transition-all -translate-y-1 duration-1000 bg-white rounded-lg p-4 shadow-lg mt-2">
+                  {ele.subcategories.map((sub, subIndex) => (
+                    <Link
+                      key={subIndex}
+                      to={`/collections/${sub.name}/${sub._id}`}
+                      className="block px-4 py-1 hover:text-gray-500"
+                    >
+                      {sub.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))
+        )}
       </div>
     </nav>
   );

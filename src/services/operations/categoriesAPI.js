@@ -14,13 +14,13 @@ export const fetchAllCategories = () => {
     try {
       const response = await apiconnector("GET", GET_ALL_CATEGORY);
       const data = response.data;
-      console.log("GET ALL CATEGORY DATA API ", data);
+      console.log("GET ALL CATEGORY DATA API ", data.categories);
 
-      dispatch(setCategoriesData(data)); 
+      dispatch(setCategoriesData(data.categories)); 
       
 
       toast.success("Categories fetched successfully!");
-      return data;
+      return data.categories;
     } catch (error) {
       console.log("GET ALL CATEGORY API ERROR:", error);
       toast.error("Failed to fetch categories.");
@@ -31,3 +31,5 @@ export const fetchAllCategories = () => {
     }
   };
 };
+
+

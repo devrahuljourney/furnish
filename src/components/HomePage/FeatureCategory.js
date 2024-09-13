@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { subcategoryData } from '../../data/dummyData'; 
 import { useSwipeable } from 'react-swipeable';
+import { useSelector } from 'react-redux';
 
 export default function FeatureCategory() {
   const [data, setData] = useState([]); 
   const params = useParams();
   const id = params.id;
+
+  const {categoriesData} = useSelector((state) => state.category)
 
   const fetchData = async () => {
     try {

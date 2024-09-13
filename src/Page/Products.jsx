@@ -3,33 +3,29 @@ import { useParams } from 'react-router-dom';
 import Product from '../components/Products/Product';
 import FAQ from '../components/FAQ';
 import Footer from './Footer';
-
-const dummyProduct = {
-  _id: "2",
-  images: [
-    "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-art.webp?v=1722149741&width=800",
-    "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-b2b.webp?v=1722149741&width=800",
-    "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-furnish.webp?v=1722149741&width=800",
-    "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-in-india.webp?v=1722149741&width=800",
-    "https://www.rajwadafurnish.com/cdn/shop/files/Moscow-Solid-Wood-8-Seater-Dining-Table-Sets-by-rajwada-online-furniture.webp?v=1722149741&width=800"
-  ],
-  title: "Classic Wooden Bed",
-  price: 55000,
-  size: ["Queen", "King"],
-  woodFinish: ["Teak", "Walnut", "Mahogany", "Oak"]
-};
+import { fetchProductById } from '../services/operations/productAPI'; 
 
 export default function Products() {
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        
-        setProduct(dummyProduct); 
+        setLoading(true);
+        const productData = await fetchProductById(id); 
+        if (productData) {
+          setProduct(productData);
+        } else {
+          setError("Product not found");
+        }
       } catch (error) {
         console.error('Error fetching product:', error);
+        setError("Failed to fetch product");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -38,7 +34,15 @@ export default function Products() {
 
   return (
     <div>
-      {product ? <Product product={product} /> : <p>Loading...</p>}
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : product ? (
+        <Product product={product} />
+      ) : (
+        <p>Product not found</p>
+      )}
       <FAQ/>
       <Footer/>
     </div>
