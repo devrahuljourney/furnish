@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from "../assets/logo.avif"; 
 import Navmenu from './Navmenu';
 import { CiSearch } from "react-icons/ci";
@@ -53,9 +53,11 @@ export default function Navbar() {
     return () => clearInterval(interval);
   }, [bannerData.length]);
 
+  const navigate = useNavigate();
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("Search data", searchData);
+    navigate(`/search?q=${searchData}`)
   };
 
   return (

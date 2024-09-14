@@ -7,6 +7,7 @@ import Collections from './Page/Collections';
 import Products from './Page/Products';
 import { CheckmarkIcon } from 'react-hot-toast';
 import Checkout from './Page/Checkout';
+import Search from './Page/Search';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path={`/collections/:subcategory/:id`} element={<Collections/>} />
           <Route path={`/product/:title/:id`}  element ={<Products/>} /> 
           <Route path={`/checkout`} element = { <Checkout/>  } />
+          <Route path="/search" element={ <Search/> } />
         </Routes>
     </div>
   );
