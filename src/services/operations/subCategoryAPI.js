@@ -2,7 +2,7 @@ import { apiconnector } from "../apiconnector";
 import { subcategoryEndpoints } from "../apis";
 import toast from "react-hot-toast";
 
-const { GET_ALL_SUBCATEGORY, GET_SUBCATEGORY_BY_ID, CREATE_SUBCATEGORY, DELETE_SUBCATEGORY_BY_ID } = subcategoryEndpoints;
+const { GET_ALL_SUBCATEGORY, GET_10_TOP_SUBCATEGORY , GET_SUBCATEGORY_BY_ID, CREATE_SUBCATEGORY, DELETE_SUBCATEGORY_BY_ID } = subcategoryEndpoints;
 
 
 export const fetchAllSubcategories = async () => {
@@ -18,6 +18,29 @@ export const fetchAllSubcategories = async () => {
 
     toast.success("Subcategories fetched successfully");
     result = response?.data?.subcategories;
+    return result;
+  } catch (error) {
+    console.log("GET ALL SUBCATEGORY API ERROR:", error);
+    toast.error(error.response?.data?.message || "Failed to fetch subcategories");
+    return null;
+  } finally {
+    toast.dismiss(toastId);
+  }
+};
+
+export const fetchtopSubcategories = async () => {
+  let result = null;
+  const toastId = toast.loading("Loading subcategories...");
+  try {
+    const response = await apiconnector("GET", GET_10_TOP_SUBCATEGORY );
+    console.log("GET ALL SUBCATEGORY API RESPONSE", response);
+
+    if (!response?.data?.success) {
+      throw new Error("Could not fetch subcategories");
+    }
+
+    toast.success("Subcategories fetched successfully");
+    result = response?.data?.data;
     return result;
   } catch (error) {
     console.log("GET ALL SUBCATEGORY API ERROR:", error);

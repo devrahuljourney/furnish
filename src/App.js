@@ -8,6 +8,8 @@ import Products from './Page/Products';
 import { CheckmarkIcon } from 'react-hot-toast';
 import Checkout from './Page/Checkout';
 import Search from './Page/Search';
+import AuthTabs from './Page/AuthTabs';
+import Profile from './Page/Profile';
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
           <Route path={`/product/:title/:id`}  element ={<Products/>} /> 
           <Route path={`/checkout`} element = { <Checkout/>  } />
           <Route path="/search" element={ <Search/> } />
+          <Route path="/auth" element={ <AuthTabs/> } />
+          <Route path='/profile' element={<Profile/>} />
+
         </Routes>
     </div>
   );

@@ -23,6 +23,8 @@ export const productEndpoint = {
 export const subcategoryEndpoints = {
     CREATE_SUBCATEGORY : BASE_URL + "/subcategory/subcreatecategory",
     GET_ALL_SUBCATEGORY : BASE_URL + "/subcategory/getallsubcategory",
+    GET_10_TOP_SUBCATEGORY : BASE_URL + "/subcategory/gettopsubcategory",
+
     GET_SUBCATEGORY_BY_ID : (id) =>  BASE_URL + `/subcategory/getsubcategorybyid/${id}`,
     DELETE_SUBCATEGORY_BY_ID : (id) => BASE_URL + `/subcategory/deletesubcategorybyid/${id}`
 }

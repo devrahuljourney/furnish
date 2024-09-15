@@ -9,7 +9,8 @@ import { IoCartOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from 'react-redux';
 import { openCart } from '../slices/cartSlice';
 import { fetchAllCategories } from '../services/operations/categoriesAPI';
-
+import { CgProfile } from "react-icons/cg";
+import { GiCaptainHatProfile } from 'react-icons/gi';
 export default function Navbar() {
   const bannerData = ["5 year warranty", "Customization Available", "Free Delivery", "Return & Refund"];
   const [currIndex, setCurrentIndex] = useState(0);
@@ -21,6 +22,7 @@ export default function Navbar() {
 
   const dispatch = useDispatch();
   const {categoriesData} = useSelector((state) => state.category);
+  const {token} = useSelector((state) => state.auth);
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -112,9 +114,15 @@ export default function Navbar() {
         </div>
 
         <div className='flex w-[20%] justify-evenly p-9'>
-          <Link to={"/login"}>
+          {
+            token === null ? (<Link to={"/auth"}>
             <CiUser style={{ width: "22px", height: "22px" }} />
+          </Link>) : (
+            <Link to={"/profile"}>
+            <CgProfile style={{ width: "22px", height: "22px" }} />
           </Link>
+          )
+          }
           <button onClick={() => dispatch(openCart())}>
             <IoCartOutline style={{ width: "22px", height: "22px" }} />
           </button>
