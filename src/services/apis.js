@@ -32,3 +32,8 @@ export const subcategoryEndpoints = {
 export const searchEndpoints = {
     SEARCH_ALL_PRODUCT : (query) => BASE_URL + `/search/searchall?q=${query}`
 }
+
+export const paymentEndpoints = {
+    PAYMENT_ORDER : BASE_URL + "/payment/order",
+    PAYMENT_VERIFY : BASE_URL + "/payment/verifypayment"
+}

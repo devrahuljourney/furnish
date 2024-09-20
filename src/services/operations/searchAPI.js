@@ -14,7 +14,7 @@ export const searchAllProduct = async ( q) => {
             throw new Error("Product not found");
         }
 
-        toast.success("Search fetched successfully");
+        // toast.success("Search fetched successfully");
         return {
             categories: data.searchCategories,
             subcategories: data.searchSubcategories,

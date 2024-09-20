@@ -17,7 +17,7 @@ export const fetchProductById = async (id) => {
             throw new Error("Product not found");
         }
 
-        toast.success("Product fetched successfully");
+        // toast.success("Product fetched successfully");
         result = response.data.product;
         return result;
     } catch (error) {

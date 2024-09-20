@@ -3,10 +3,12 @@ import Banner from '../components/HomePage/Banner'
 import FeatureCategory from '../components/HomePage/FeatureCategory'
 import ShopByRoom from '../components/HomePage/ShopByRoom'
 import Footer from './Footer'
+import PaymentComponent from '../test/test'
 
 export default function HomePage() {
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full mt-[20%]'>
+    
         <Banner/>
         <FeatureCategory/>
         <ShopByRoom/>

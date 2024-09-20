@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchProductById } from '../services/operations/productAPI';
 import { STATE_CHOICES } from '../data/dummyData';
+import { buy } from '../services/operations/paymentAPI'; // Adjust the import based on your file structure
+import { useDispatch } from 'react-redux';
 
 export default function Checkout() {
     const location = useLocation();
     const { productId, bycart } = location.state || {};
-    const [allId, setAllId] = useState([]);
     const { cart } = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+    const [allId, setAllId] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [formData, setFormData] = useState({
         country: "India",
@@ -31,13 +34,13 @@ export default function Checkout() {
             });
             setAllId(ids);
         } else {
-            // Fetch product details by ID
-            // const fetchProduct = async () => {
-            //     const response = await fetchProductById(productId);
-            //     setAllId([response._id]);
-            //     newTotalPrice = response.price;
-            // };
-            // fetchProduct();
+            const fetchProduct = async () => {
+                const response = await fetchProductById(productId);
+                setAllId([response._id]);
+                newTotalPrice = response.price;
+                setTotalPrice(newTotalPrice);
+            };
+            fetchProduct();
         }
         setTotalPrice(newTotalPrice);
     }, [bycart, cart, productId]);
@@ -49,9 +52,30 @@ export default function Checkout() {
         });
     };
 
+    const {token} = useSelector((state) => state.auth)
+    console.log("Token from checkout ", token)
+
+    const navigate = useNavigate();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Prepare order details
+        // const orderDetails = {
+        //     productIds: allId,
+        //     totalAmount: totalPrice,
+        //     shippingAddress: {
+        //         ...formData,
+        //     },
+        // };
+
+        // Call the buy function to process payment
+        
+        await buy(token, allId, totalPrice,formData,  navigate,); 
+    };
+
     return (
         <div className="container mx-auto md:mt-[12%] p-4">
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
                 <label htmlFor="country" className="block">
                     Country/Region
                     <select
@@ -85,6 +109,7 @@ export default function Checkout() {
                             type="text"
                             onChange={handleChange}
                             className="w-full border border-gray-300 rounded-md p-2"
+                            required
                         />
                     </label>
                 </div>
@@ -97,6 +122,7 @@ export default function Checkout() {
                         type="text"
                         onChange={handleChange}
                         className="w-full border border-gray-300 rounded-md p-2"
+                        required
                     />
                 </label>
                 <label htmlFor="apartment" className="block">
@@ -119,16 +145,17 @@ export default function Checkout() {
                             type="text"
                             onChange={handleChange}
                             className="w-full border border-gray-300 rounded-md p-2"
+                            required
                         />
                     </label>
 
                     <label htmlFor="state" className="block">
-                        
                         <select
                             name="state"
                             value={formData.state}
                             onChange={handleChange}
                             className="block w-full border border-gray-300 rounded-md p-2"
+                            required
                         >
                             <option value="">Select State</option>
                             {STATE_CHOICES.map((data) => (
@@ -147,6 +174,7 @@ export default function Checkout() {
                             type="number"
                             onChange={handleChange}
                             className="w-full border border-gray-300 rounded-md p-2"
+                            required
                         />
                     </label>
                 </div>
@@ -156,16 +184,17 @@ export default function Checkout() {
                         placeholder="Phone Number"
                         value={formData.phoneNumber}
                         name="phoneNumber"
-                        type="number"
+                        type="tel"
                         onChange={handleChange}
                         className="w-full border border-gray-300 rounded-md p-2"
+                        required
                     />
                 </label>
-            </form>
 
-            <div>
-                
-            </div>
+                <button type="submit" className="bg-blue-500 text-white rounded-md p-2">
+                    Proceed to Payment
+                </button>
+            </form>
         </div>
     );
 }

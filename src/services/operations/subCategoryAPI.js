@@ -16,7 +16,7 @@ export const fetchAllSubcategories = async () => {
       throw new Error("Could not fetch subcategories");
     }
 
-    toast.success("Subcategories fetched successfully");
+    // toast.success("Subcategories fetched successfully");
     result = response?.data?.subcategories;
     return result;
   } catch (error) {
@@ -39,7 +39,7 @@ export const fetchtopSubcategories = async () => {
       throw new Error("Could not fetch subcategories");
     }
 
-    toast.success("Subcategories fetched successfully");
+    // toast.success("Subcategories fetched successfully");
     result = response?.data?.data;
     return result;
   } catch (error) {
@@ -63,7 +63,7 @@ export const fetchSubcategoryById = async (id) => {
       throw new Error("Could not fetch subcategory");
     }
 
-    toast.success("Subcategory fetched successfully");
+    // toast.success("Subcategory fetched successfully");
     result = response?.data?.subcategory;
     return result;
   } catch (error) {

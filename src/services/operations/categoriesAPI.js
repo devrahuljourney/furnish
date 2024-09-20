@@ -19,7 +19,7 @@ export const fetchAllCategories = () => {
       dispatch(setCategoriesData(data.categories)); 
       
 
-      toast.success("Categories fetched successfully!");
+      // toast.success("Categories fetched successfully!");
       return data.categories;
     } catch (error) {
       console.log("GET ALL CATEGORY API ERROR:", error);
