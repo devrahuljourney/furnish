@@ -5,14 +5,18 @@ import { fetchProductById } from '../services/operations/productAPI';
 import { STATE_CHOICES } from '../data/dummyData';
 import { buy } from '../services/operations/paymentAPI'; // Adjust the import based on your file structure
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
+import CartProductRender from '../components/Cart/CartProductRender';
+import { openCart, resetCart } from '../slices/cartSlice';
 
 export default function Checkout() {
     const location = useLocation();
-    const { productId, bycart } = location.state || {};
+    const { productId, byCart  } = location.state || {};
     const { cart } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const [allId, setAllId] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [product,setProduct ] = useState({});
     const [formData, setFormData] = useState({
         country: "India",
         firstName: "",
@@ -25,25 +29,37 @@ export default function Checkout() {
         phoneNumber: "",
     });
 
+
     useEffect(() => {
+        console.log("By cart ", byCart)
         let newTotalPrice = 0;
-        if (bycart) {
+        
+        if (byCart) {
             const ids = cart.map((data) => {
                 newTotalPrice += data.price;
                 return data._id;
             });
             setAllId(ids);
+            setTotalPrice(newTotalPrice);
         } else {
             const fetchProduct = async () => {
-                const response = await fetchProductById(productId);
-                setAllId([response._id]);
-                newTotalPrice = response.price;
-                setTotalPrice(newTotalPrice);
+                try {
+                    const response = await fetchProductById(productId);
+                    if (response) {
+                        setProduct(response);  
+                        setAllId([response._id]);
+                        setTotalPrice(response.price);  
+                    }
+                } catch (error) {
+                    console.error("Error fetching product:", error);
+                }
             };
             fetchProduct();
         }
         setTotalPrice(newTotalPrice);
-    }, [bycart, cart, productId]);
+    }, [byCart, cart, productId]);
+    
+    
 
     const handleChange = (e) => {
         setFormData({
@@ -59,22 +75,18 @@ export default function Checkout() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Prepare order details
-        // const orderDetails = {
-        //     productIds: allId,
-        //     totalAmount: totalPrice,
-        //     shippingAddress: {
-        //         ...formData,
-        //     },
-        // };
 
-        // Call the buy function to process payment
-        
+        if(!token) {
+            toast.error("You havn't login yet")
+            navigate("/auth")
+        }
+        dispatch(openCart(false))
         await buy(token, allId, totalPrice,formData,  navigate,); 
     };
 
+    
     return (
-        <div className="container mx-auto md:mt-[12%] p-4">
+        <div className="container flex md:flex-row flex-col mx-auto md:mt-[12%] p-4">
             <form className="space-y-4" onSubmit={handleSubmit}>
                 <label htmlFor="country" className="block">
                     Country/Region
@@ -195,6 +207,37 @@ export default function Checkout() {
                     Proceed to Payment
                 </button>
             </form>
+
+            <div>
+  {
+    byCart ? (
+      <CartProductRender cart={cart} />
+    ) : (
+      <div>
+        {product && product.images && product.images.length > 0 ? (
+          <article className='flex flex-row py-5 gap-3 justify-between w-full items-center' key={product._id}>
+            <div className='w-[150px] h-[150px]'>
+              <img 
+                className='h-full w-full object-contain' 
+                src={product.images[0]?.url} 
+                alt={product.name || "Product"} 
+              />
+            </div>
+            <div className='w-[60%] flex gap-2 flex-col justify-center items-start'>
+              <p className='text-[13px] text-gray-500'>RAJWADA FURNISH</p>
+              <h3 className='font-bold text-[18px]'>{product.name}</h3>
+              <p className='font-bold text-gray-500'>₹ {product.price}</p>
+              <p className='text-[13px] text-gray-500'>{product.selectedSize || 'Size not selected'} / {product.selectedWood || 'Wood finish not selected'}</p>
+            </div>
+          </article>
+        ) : (
+          <p>Loading product details...</p> // Optional: Display a loading message until product is fetched
+        )}
+      </div>
+    )
+  }
+</div>
+
         </div>
     );
 }

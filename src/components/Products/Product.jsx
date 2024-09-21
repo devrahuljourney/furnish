@@ -135,9 +135,7 @@ export default function Product({ product }) {
         <Instructions />
       </div>
 
-      <div className={`absolute top-0 right-0 p-4 bg-nav-banner-color transition-transform duration-250 ease-in ${cartOpen ? 'translate-x-0' : 'translate-x-full'} md:w-1/4 w-full h-full`}>
-        <Cart />
-      </div>
+      
     </div>
   );
 }

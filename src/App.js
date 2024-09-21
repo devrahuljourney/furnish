@@ -10,8 +10,12 @@ import Checkout from './Page/Checkout';
 import Search from './Page/Search';
 import AuthTabs from './Page/AuthTabs';
 import Profile from './Page/Profile';
+import Cart from './Page/Cart';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const {cartOpen} = useSelector((state) => state.cart)
   return (
     <div className="App">
         <Navbar/>
@@ -25,6 +29,9 @@ function App() {
           <Route path='/profile' element={<Profile/>} />
 
         </Routes>
+        <div className={`absolute top-0 right-0 p-4 mt-[12%] bg-nav-banner-color transition-transform duration-250 ease-in ${cartOpen ? 'translate-x-0' : 'translate-x-full'} md:w-1/4 w-full h-full`}>
+        <Cart />
+      </div>
     </div>
   );
 }
