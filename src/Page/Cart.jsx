@@ -9,7 +9,7 @@ export default function Cart() {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  // Calculate total price dynamically
+  
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.price, 0);
   };

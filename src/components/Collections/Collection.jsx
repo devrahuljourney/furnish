@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export default function Collection({ data }) {
   return (
     <div>
-      <div className='w-full flex flex-wrap items-center justify-center gap-4 p-4'>
+      <div className='w-full flex md:flex-wrap flex-col items-center justify-center gap-4 p-4'>
         {data.map((product, index) => (
           <Link 
-            className='flex flex-col items-center w-[20%] h-auto p-1' 
+            className='flex flex-col items-center md:w-[20%] h-auto p-1' 
             key={index} 
             to={`/product/${product.name}/${product._id}`}>
             <img 
@@ -15,9 +15,9 @@ export default function Collection({ data }) {
               src={product.images[0]?.url} 
               alt={product.title} 
             />
-            <p className='mt-2 text-center text-[11px]'>RAJWADA FURNISH</p>
-            <p className='text-center md:text-[20px] text-[18px]'>{product.name}</p>
-            <p className='text-center text-[16px] text-gray-700'>From {product.price}</p>
+            <p className='mt-2 text-center text-[13px] md:text-[11px]'>RAJWADA FURNISH</p>
+            <p className='text-center md:text-[20px] md:font-normal font-bold text-[20px]'>{product.name}</p>
+            <p className='text-center font-bold text-[16px] text-gray-700'>From {product.price}</p>
           </Link>
         ))}
       </div>

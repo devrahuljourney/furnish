@@ -86,7 +86,7 @@ export default function Checkout() {
 
     
     return (
-        <div className="container flex md:flex-row flex-col mx-auto md:mt-[12%] p-4">
+        <div className="container flex md:flex-row flex-col w-full md:justify-evenly items-center justify-center mx-auto md:mt-[12%] mt-[120px] p-4">
             <form className="space-y-4" onSubmit={handleSubmit}>
                 <label htmlFor="country" className="block">
                     Country/Region

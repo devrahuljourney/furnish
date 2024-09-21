@@ -11,7 +11,7 @@ const AuthTabs = () => {
     };
 
     return (
-        <div className='w-full mt-[13%] max-w-md mx-auto p-4'>
+        <div className='w-full md:mt-[13%] mt-[50%] max-w-md mx-auto p-4'>
             <div className='flex mb-4'>
                 <button 
                     className={`flex-1 p-2 text-center ${activeTab === 'login' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
