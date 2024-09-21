@@ -14,6 +14,7 @@ export default function Navmenu({data}) {
   const { loading } = useSelector((state) => state.category); 
 
   const {token} =useSelector((state) => state.auth)
+  
   return (
     <nav className="relative">
       {/* Hamburger Menu Button for Mobile */}

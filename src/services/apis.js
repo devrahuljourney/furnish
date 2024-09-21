@@ -37,3 +37,8 @@ export const paymentEndpoints = {
     PAYMENT_ORDER : BASE_URL + "/payment/order",
     PAYMENT_VERIFY : BASE_URL + "/payment/verifypayment"
 }
+
+export const orderEndpoints = {
+    GET_ALL_ORDER : BASE_URL + `/order/getallorder`
+    
+}

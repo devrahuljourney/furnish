@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { authEndpoints } from "../apis";
 import { setLoading, setProfileData, setSignUpData, setToken } from "../../slices/authSlice";
 import { apiconnector } from "../apiconnector";
+import { resetCart } from "../../slices/cartSlice";
 
 const { SIGNUP, LOGIN } = authEndpoints;
 
@@ -40,6 +41,9 @@ export const loginApi = (data) => {
 
             dispatch(setProfileData(response.data.existingUser)); 
             dispatch(setToken(response.data.token));
+            localStorage.setItem("token", response.data.token);
+
+
             toast.success("Logged in successfully");
             return response.data;
         } catch (error) {
@@ -51,3 +55,15 @@ export const loginApi = (data) => {
         }
     }
 }
+
+export function logout(navigate) {
+    return (dispatch) => {
+      dispatch(setToken(null))
+      dispatch(setProfileData(null))
+      dispatch(resetCart())
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      toast.success("Logged Out")
+      navigate("/")
+    }
+  }

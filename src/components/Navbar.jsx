@@ -23,6 +23,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const {categoriesData} = useSelector((state) => state.category);
   const {token} = useSelector((state) => state.auth);
+  
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;

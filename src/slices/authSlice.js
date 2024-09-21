@@ -4,7 +4,8 @@ const initialState = {
     signUpData : null,
   profileData: null,
   loading: false,
-  token: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null,
+  token: localStorage.getItem("token") || null,
+
   paymentLoading : false
 };
 
@@ -13,7 +14,7 @@ const authSlice = createSlice({
   initialState: initialState,
   reducers: {
     setProfileData(state, value) {
-      state.signupData = value.payload;
+      state.signUpData = value.payload;
     },
     setLoading(state, value) {
       state.loading = value.payload;

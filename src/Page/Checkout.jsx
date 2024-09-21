@@ -80,7 +80,7 @@ export default function Checkout() {
             toast.error("You havn't login yet")
             navigate("/auth")
         }
-        dispatch(openCart(false))
+        // dispatch(openCart(false))
         await buy(token, allId, totalPrice,formData,  navigate,); 
     };
 

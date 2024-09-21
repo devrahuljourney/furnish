@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Collection({ data }) {
   return (
     <div>
-      <div className='w-full flex md:flex-wrap flex-col items-center justify-center gap-4 p-4'>
+      <div className='w-full flex md:flex-row flex-col items-center justify-center gap-4 p-4'>
         {data.map((product, index) => (
           <Link 
             className='flex flex-col items-center md:w-[20%] h-auto p-1' 
