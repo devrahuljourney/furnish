@@ -31,7 +31,7 @@ export default function FooterItems() {
                 <p className=' text-[13px] ' >Contact Us for any assistance</p>
                 <div className='flex flex-col item-start justify-center' >
                     <p className=' text-[14px] text-gray-400 ' >+91 70231-68022</p>
-                    <p className=' text-[14px] text-gray-400 '>support@rajwadafurnish.com</p>
+                    <p className=' text-[14px] text-gray-400 '>support@ranbankafurnitures.com</p>
                 </div>
             </div>
             <div className='flex flex-col gap-2 md:w-[25%] w-full item-start justify-center'>

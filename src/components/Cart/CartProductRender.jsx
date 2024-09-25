@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../../slices/cartSlice';
+import { Site_name } from '../../data/dummyData';
 export default function CartProductRender({cart}) {
     const dispatch = useDispatch();
     
@@ -17,7 +18,7 @@ export default function CartProductRender({cart}) {
                   <img className=' h-full w-full object-contain ' src={image} alt={data.title} />
                 </div>
                 <div className=' w-[60%] flex gap-2 flex-col justify-center items-start ' >
-                  <p className=' text-[13px] text-gray-500 '  >RAJWADA FURNISH</p>
+                  <p className=' text-[13px] text-gray-500 '  >{Site_name}</p>
                   <h3 className=' font-bold text-[18px]  ' >{data.name}</h3>
                   <p className=' font-bold text-gray-500 ' >₹ {data.price}</p>
                   <p className=' text-[13px] text-gray-500 ' >{data.selectedSize || 'Size not selected'} / {data.selectedWood || 'Wood finish not selected'}</p>

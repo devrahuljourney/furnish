@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Site_name } from '../../data/dummyData';
 
 export default function Collection({ data }) {
   return (
@@ -15,7 +16,7 @@ export default function Collection({ data }) {
               src={product.images[0]?.url} 
               alt={product.title} 
             />
-            <p className='mt-2 text-center text-[13px] md:text-[11px]'>RAJWADA FURNISH</p>
+            <p className='mt-2 text-center text-[13px] md:text-[11px]'>{Site_name}</p>
             <p className='text-center md:text-[20px] md:font-normal font-bold text-[20px]'>{product.name}</p>
             <p className='text-center font-bold text-[16px] text-gray-700'>From {product.price}</p>
           </Link>

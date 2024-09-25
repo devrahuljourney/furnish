@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchProductById } from '../services/operations/productAPI';
-import { STATE_CHOICES } from '../data/dummyData';
+import { Site_name, STATE_CHOICES } from '../data/dummyData';
 import { buy } from '../services/operations/paymentAPI'; // Adjust the import based on your file structure
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
@@ -62,6 +62,7 @@ export default function Checkout() {
     
 
     const handleChange = (e) => {
+        console.log("Changing:", e.target.name, e.target.value);
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -74,6 +75,8 @@ export default function Checkout() {
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Formdata : ", formData)
+        
 
 
         if(!token) {
@@ -81,7 +84,7 @@ export default function Checkout() {
             navigate("/auth")
         }
         // dispatch(openCart(false))
-        await buy(token, allId, totalPrice,formData,  navigate,); 
+        await buy(token, allId, totalPrice,  formData,  navigate,); 
     };
 
     
@@ -224,14 +227,14 @@ export default function Checkout() {
               />
             </div>
             <div className='w-[60%] flex gap-2 flex-col justify-center items-start'>
-              <p className='text-[13px] text-gray-500'>RAJWADA FURNISH</p>
+              <p className='text-[13px] text-gray-500'> {Site_name} </p>
               <h3 className='font-bold text-[18px]'>{product.name}</h3>
               <p className='font-bold text-gray-500'>₹ {product.price}</p>
               <p className='text-[13px] text-gray-500'>{product.selectedSize || 'Size not selected'} / {product.selectedWood || 'Wood finish not selected'}</p>
             </div>
           </article>
         ) : (
-          <p>Loading product details...</p> // Optional: Display a loading message until product is fetched
+          <p>Loading product details...</p> 
         )}
       </div>
     )

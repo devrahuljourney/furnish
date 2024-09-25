@@ -17,9 +17,12 @@ function loadScript(src) {
   });
 }
 
-export async function buy(token, product, totalPrice,data, navigate, dispatch) {
+export async function buy(token, product, totalPrice,formData, navigate, dispatch) {
   const toastId = toast.loading("Loading...");
   console.log("Token from buy api", token)
+
+console.log("Total Price:", totalPrice);
+console.log("Form Data:", formData);
   try {
     // Load the Razorpay script
     const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
@@ -32,7 +35,7 @@ export async function buy(token, product, totalPrice,data, navigate, dispatch) {
     const orderResponse = await apiconnector(
       "POST",
       PAYMENT_ORDER,
-       {totalPrice},
+       {totalPrice,formData},
       { Authorization: `Bearer ${token}` }
     );
 
@@ -50,7 +53,7 @@ export async function buy(token, product, totalPrice,data, navigate, dispatch) {
       order_id: orderResponse.data.data.id,
       name: "Furniture Store",
       handler: function (response) {
-        verifyPayment({ ...response, product, FormData }, token, navigate, dispatch);
+        verifyPayment({ ...response, product, formData }, token, navigate, dispatch);
       },
     };
 
