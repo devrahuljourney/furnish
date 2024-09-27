@@ -116,6 +116,9 @@ const OrderHistory = () => {
                                 <span className="font-semibold">Phone Number:</span> {order.phoneNumber || 'N/A'}
                             </p>
                             <p className="text-gray-600 mb-4">
+                                <span className="font-semibold">Selected Wood:</span> {order.selectedWood}
+                            </p>
+                            <p className="text-gray-600 mb-4">
                                 <span className="font-semibold">Payment Status:</span> {order.paymentStatus}
                             </p>
                             <p className="text-gray-500 text-sm">

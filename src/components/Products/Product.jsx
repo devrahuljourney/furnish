@@ -60,6 +60,7 @@ export default function Product({ product }) {
       state: {
         productId: _id,
         byCart: false,
+        selectedWood: woodFinish[currWood],
         
       }
     });
@@ -69,26 +70,26 @@ export default function Product({ product }) {
   }, []);
 
   return (
-    <div className='relative md:mt-[12%] mt-[50%] flex flex-col md:flex-row md:gap-6'>
+    <div className='relative md:mt-[12%] mt-[50%] md:h-screen flex flex-col md:flex-row md:gap-6'>
       {/* Image Section */}
-      <div className='flex flex-col md:flex-row md:w-2/3 gap-4 md:gap-6'>
+      <div className='flex flex-col-reverse md:flex-row md:h-[100%] md:w-2/3 gap-4 md:gap-6'>
         {/* Thumbnail Image Buttons */}
-        <div className='flex flex-row md:flex-col gap-2 md:gap-4 md:w-1/4'>
+        <div className='md:flex  md:flex-col gap-2 md:gap-4 md:w-[10%] grid  grid-cols-5 '>
           {images.map((image, index) => (
             <button
               key={index}
-              className={`border-2 md:w-[150px] md:h-[150px] ${currImageIndex === index ? 'border-blue-500' : 'border-transparent'} p-1`}
+              className={`border-2   ${currImageIndex === index ? 'border-blue-500' : 'border-transparent'} p-1`}
               onClick={() => setCurrImageIndex(index)}
             >
-              <img className='w-full h-full object-contain' src={image.url} alt={image.altText || `image ${index}`} />
+              <img className='w-full h-auto md:h-full object-contain' src={image.url} alt={image.altText || `image ${index}`} />
             </button>
           ))}
         </div>
 
         {/* Current Image Display */}
-        <div {...handlers} className='flex-grow w-full p-2 md:w-3/4'>
+        <div {...handlers} className='flex-grow w-full h-full p-2 md:w-3/4'>
           {images.length > 0 ? (
-            <img src={images[currImageIndex]?.url} className='w-full h-auto object-contain' alt={images[currImageIndex]?.altText || 'Selected'} />
+            <img src={images[currImageIndex]?.url} className='w-full h-full object-contain' alt={images[currImageIndex]?.altText || 'Selected'} />
           ) : (
             <p>No images available</p>
           )}

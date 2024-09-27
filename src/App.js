@@ -29,7 +29,7 @@ function App() {
           <Route path='/profile' element={<Profile/>} />
 
         </Routes>
-        <div className={`absolute top-0 right-0 p-4 mt-[12%] bg-nav-banner-color transition-transform duration-250 ease-in ${cartOpen ? 'translate-x-0' : 'translate-x-full'} md:w-1/4 w-full h-full`}>
+        <div className={`absolute top-0 right-0 p-4 md:mt-[12%] mt-[50%] bg-nav-banner-color transition-transform duration-250 ease-in ${cartOpen ? 'translate-x-0' : 'translate-x-full'} md:w-1/4 w-full h-full`}>
         <Cart />
       </div>
     </div>

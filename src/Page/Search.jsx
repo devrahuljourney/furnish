@@ -34,7 +34,7 @@ export default function Search() {
   }, [q]);
 
   return (
-    <div className=' flex w-full flex-col justify-center items-center mt-[2%] md:mt-[13%] ' >
+    <div className=' flex w-full flex-col justify-center items-center mt-[50%] md:mt-[13%] ' >
       <div className=' w-full gap-2 p-2 flex flex-col justify-center items-center  ' >
         <p className=' font-semibold text-[22px]  ' >Search</p>
         <p className=' border-b-2 border-gray-200 w-full h-[2px] ' ></p>

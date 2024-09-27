@@ -20,7 +20,8 @@ export default function Cart() {
     navigate("/checkout", {
       state: {
         productId: null,
-        byCart: true
+        byCart: true,
+        selectedWood : cart.selectedWood
       }
     });
   };

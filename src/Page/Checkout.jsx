@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { fetchProductById } from '../services/operations/productAPI';
 import { Site_name, STATE_CHOICES } from '../data/dummyData';
 import { buy } from '../services/operations/paymentAPI'; // Adjust the import based on your file structure
@@ -11,7 +11,7 @@ import { openCart, resetCart } from '../slices/cartSlice';
 
 export default function Checkout() {
     const location = useLocation();
-    const { productId, byCart  } = location.state || {};
+    const { productId, byCart, selectedWood  } = location.state || {};
     const { cart } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const [allId, setAllId] = useState([]);
@@ -27,7 +27,11 @@ export default function Checkout() {
         state: "",
         pinCode: "",
         phoneNumber: "",
+        selectedWood: selectedWood
     });
+    const calculateTotalPrice = () => {
+        return cart.reduce((total, item) => total + item.price, 0);
+      };
 
 
     useEffect(() => {
@@ -206,8 +210,13 @@ export default function Checkout() {
                     />
                 </label>
 
-                <button type="submit" className="bg-blue-500 text-white rounded-md p-2">
-                    Proceed to Payment
+                <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white rounded-md p-2">
+                Proceed to Pay - 
+                    <div className='font-bold' >
+                    {
+                        byCart ? ( calculateTotalPrice().toFixed(2)  ) : ( product.price)
+                    }
+                    </div>
                 </button>
             </form>
 
@@ -218,7 +227,7 @@ export default function Checkout() {
     ) : (
       <div>
         {product && product.images && product.images.length > 0 ? (
-          <article className='flex flex-row py-5 gap-3 justify-between w-full items-center' key={product._id}>
+          <Link to={`/product/${product.title}/${product._id}`} className='flex flex-row py-5 gap-3 justify-between w-full items-center' key={product._id}>
             <div className='w-[150px] h-[150px]'>
               <img 
                 className='h-full w-full object-contain' 
@@ -232,7 +241,7 @@ export default function Checkout() {
               <p className='font-bold text-gray-500'>₹ {product.price}</p>
               <p className='text-[13px] text-gray-500'>{product.selectedSize || 'Size not selected'} / {product.selectedWood || 'Wood finish not selected'}</p>
             </div>
-          </article>
+          </Link>
         ) : (
           <p>Loading product details...</p> 
         )}
