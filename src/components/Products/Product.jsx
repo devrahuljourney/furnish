@@ -1,38 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addToCart, openCart } from '../../slices/cartSlice';
-import Cart from '../../Page/Cart';
 import Instructions from '../Instruction';
 
-// Ensure to replace these with actual images or remove if not used
 import wood1 from "../../assets/wood1.avif";
 import wood2 from "../../assets/wood2.avif";
 import wood3 from "../../assets/wood4.avif";
 
 export default function Product({ product }) {
   const { _id, images = [], name, price, sizes = [], stock = 0, description } = product;
-  const woodFinish = ["pine", "oak", "walnut"]
+  const woodFinish = ["pine", "oak", "walnut"];
 
+  // Initialize state
   const [currImageIndex, setCurrImageIndex] = useState(0);
-  const [currWood, setCurrWood] = useState(woodFinish ? woodFinish[0] : ""); 
+  const [currWood, setCurrWood] = useState(0); 
   const [currSize, setCurrSize] = useState(sizes.length > 0 ? sizes[0] : ""); 
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { cart, cartOpen } = useSelector((state) => state.cart);
+  const { cart } = useSelector((state) => state.cart);
 
   const handleAddToCart = () => {
-    const productWithSelectedOptions = {
-      ...product,
-      selectedSize: currSize,
-      selectedWood: currWood,
-      price: product.price,
-    };
-    dispatch(addToCart(productWithSelectedOptions));
-    console.log('Current Cart:', cart);
-    dispatch(openCart());
+    // Check if images are available before adding to cart
+    if (images.length > 0) {
+      const productWithSelectedOptions = {
+        ...product,
+        selectedSize: currSize,
+        selectedWood: woodFinish[currWood], 
+        price: product.price,
+      };
+      dispatch(addToCart(productWithSelectedOptions));
+      console.log('Current Cart:', cart);
+      dispatch(openCart());
+    } else {
+      alert('Please add at least one image before adding to cart!');
+    }
   };
 
   const handleNext = () => {
@@ -55,10 +59,14 @@ export default function Product({ product }) {
     navigate("/checkout", {
       state: {
         productId: _id,
-        byCart: false
+        byCart: false,
+        
       }
     });
   };
+  useEffect(() => {
+    console.log("Product ", product)
+  }, []);
 
   return (
     <div className='relative md:mt-[12%] mt-[50%] flex flex-col md:flex-row md:gap-6'>
@@ -94,13 +102,13 @@ export default function Product({ product }) {
         <p className='text-md'>{description}</p>
 
         {/* Size Selection */}
-        {sizes.length > 0 && (
+        {/* {sizes.length > 0 && (
           <div className='flex flex-col gap-2'>
             <p className='text-sm'>Select Your Size</p>
             <div className='flex flex-wrap gap-2'>
-              {sizes.map((data) => (
+              {sizes.map((data, index) => (
                 <button
-                  key={data}
+                  key={index}
                   onClick={() => setCurrSize(data)}
                   className={`border-2 p-2 rounded ${data === currSize ? 'border-blue-500' : 'border-gray-500'}`}
                 >
@@ -109,7 +117,7 @@ export default function Product({ product }) {
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Wood Finish Selection */}
         <div>
@@ -134,8 +142,6 @@ export default function Product({ product }) {
         </div>
         <Instructions />
       </div>
-
-      
     </div>
   );
 }

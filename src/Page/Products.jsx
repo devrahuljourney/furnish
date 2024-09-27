@@ -12,24 +12,44 @@ export default function Products() {
   const [error, setError] = useState(null); 
 
   useEffect(() => {
+    if (!id) {
+      setError("Invalid product ID");
+      setLoading(false);
+      return;
+    }
+
+    let isMounted = true;
+
     const fetchProduct = async () => {
       try {
         setLoading(true);
         const productData = await fetchProductById(id); 
-        if (productData) {
-          setProduct(productData);
-        } else {
-          setError("Product not found");
+        if (isMounted) {
+          if (productData) {
+            setProduct(productData);
+            
+          } else {
+            setError("Product not found");
+          }
         }
       } catch (error) {
         console.error('Error fetching product:', error);
-        setError("Failed to fetch product");
+        if (isMounted) {
+          setError("Failed to fetch product");
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchProduct();
+
+    return () => {
+      isMounted = false;
+      
+    };
   }, [id]);
 
   return (
@@ -38,13 +58,11 @@ export default function Products() {
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
-      ) : product ? (
-        <Product product={product} />
       ) : (
-        <p>Product not found</p>
+        <Product product={product} />
       )}
-      <FAQ/>
-      <Footer/>
+      <FAQ />
+      <Footer />
     </div>
   );
 }

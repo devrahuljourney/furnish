@@ -4,21 +4,21 @@ import { Site_name } from '../../data/dummyData';
 
 export default function Collection({ data }) {
   return (
-    <div>
-      <div className='w-full flex md:flex-row flex-col items-center justify-center gap-4 p-4'>
+    <div className="flex justify-center">
+      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
         {data.map((product, index) => (
           <Link 
-            className='flex flex-col items-center md:w-[20%] h-auto p-1' 
+            className="flex flex-col items-center w-full h-auto p-3" 
             key={index} 
             to={`/product/${product.name}/${product._id}`}>
             <img 
-              className='w-full h-full object-cover rounded-lg shadow-gray-300 shadow-lg'
+              className="w-full h-48 object-cover rounded-lg shadow-lg" 
               src={product.images[0]?.url} 
-              alt={product.title} 
+              alt={product.name} 
             />
-            <p className='mt-2 text-center text-[13px] md:text-[11px]'>{Site_name}</p>
-            <p className='text-center md:text-[20px] md:font-normal font-bold text-[20px]'>{product.name}</p>
-            <p className='text-center font-bold text-[16px] text-gray-700'>From {product.price}</p>
+            <p className="mt-2 text-center text-sm">{Site_name}</p>
+            <p className="text-center text-lg font-bold">{product.name}</p>
+            <p className="text-center font-bold text-md text-gray-700">From {product.price}</p>
           </Link>
         ))}
       </div>
