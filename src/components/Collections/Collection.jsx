@@ -11,9 +11,9 @@ export default function Collection({ data }) {
             className="flex flex-col items-center w-full h-auto p-3" 
             key={index} 
             to={`/product/${product.name}/${product._id}`}>
-            <img 
-              className="w-full h-48 object-cover rounded-lg shadow-lg" 
-              src={product.images[0]?.url} 
+            <img  loading='lazy'
+              className="w-full  object-cover rounded-lg shadow-lg" 
+              src={product.images[1]?.url} 
               alt={product.name} 
             />
             <p className="mt-2 text-center text-sm">{Site_name}</p>

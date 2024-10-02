@@ -17,7 +17,7 @@ export const fetchAllOrders = async (token) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
-            credentials: "include",  // This ensures cookies are sent with the request
+            credentials: "include", 
         });
 
         // Parse the response as JSON

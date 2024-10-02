@@ -52,7 +52,7 @@ export default function Navmenu({data}) {
           {loading ? (
             <li className="py-2">Loading categories...</li>
           ) : (
-            data.slice(0, 6).map((ele, index) => ( 
+            data.map((ele, index) => ( 
               <li key={index}>
                 <p
                   className="cursor-pointer py-2 hover:text-gray-700"
@@ -91,14 +91,14 @@ export default function Navmenu({data}) {
         {loading ? (
           <p>Loading categories...</p>
         ) : (
-          data.slice(0, 6).map((ele, index) => ( 
+          data.map((ele, index) => ( 
             <div
               key={index}
               className="relative group"
               onMouseEnter={() => setHoveredCategory(index)}
               onMouseLeave={() => setHoveredCategory(null)}
             >
-              <p className="hover:text-gray-700 cursor-pointer">{ele.name}</p>
+              <p className="hover:text-gray-700 cursor-pointer">{ele.name.toLowerCase()}</p>
 
               {/* Subcategories on hover for desktop */}
               {hoveredCategory === index && (
