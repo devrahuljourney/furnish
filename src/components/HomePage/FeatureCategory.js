@@ -37,7 +37,7 @@ export default function FeatureCategory() {
               className='flex flex-col items-center w-full sm:w-[300px] md:w-[400px] gap-3'
             >
               <div className='w-full h-[200px] sm:h-[250px] md:h-[300px]'>
-                <img 
+                <img  loading='lazy'
                   src={item?.products?.[0]?.images?.[0]?.url || "https://via.placeholder.com/400"}  
                   alt={item?.name || 'Subcategory Image'} 
                   className='w-full h-full object-cover' 

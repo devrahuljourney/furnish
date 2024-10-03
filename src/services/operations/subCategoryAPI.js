@@ -7,7 +7,7 @@ const { GET_ALL_SUBCATEGORY, GET_10_TOP_SUBCATEGORY , GET_SUBCATEGORY_BY_ID, CRE
 
 export const fetchAllSubcategories = async () => {
   let result = null;
-  const toastId = toast.loading("Loading subcategories...");
+  const toastId = toast.loading("Loading...");
   try {
     const response = await apiconnector("GET", GET_ALL_SUBCATEGORY);
     console.log("GET ALL SUBCATEGORY API RESPONSE", response);
@@ -30,7 +30,7 @@ export const fetchAllSubcategories = async () => {
 
 export const fetchtopSubcategories = async () => {
   let result = null;
-  const toastId = toast.loading("Loading subcategories...");
+  const toastId = toast.loading("Loading...");
   try {
     const response = await apiconnector("GET", GET_10_TOP_SUBCATEGORY );
     console.log("GET ALL SUBCATEGORY API RESPONSE", response);
@@ -54,7 +54,7 @@ export const fetchtopSubcategories = async () => {
 
 export const fetchSubcategoryById = async (id) => {
   let result = null;
-  const toastId = toast.loading("Loading subcategory...");
+  const toastId = toast.loading("Loading...");
   try {
     const response = await apiconnector("GET", GET_SUBCATEGORY_BY_ID(id));
     console.log("GET SUBCATEGORY BY ID API RESPONSE", response);

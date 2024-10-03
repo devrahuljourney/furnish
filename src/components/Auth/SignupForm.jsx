@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signUpApi } from '../../services/operations/authAPI'; // Adjust import as necessary
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
     const [firstName, setFirstName] = useState('');
@@ -10,6 +11,7 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +27,7 @@ const RegisterForm = () => {
         }
 
         dispatch(signUpApi({ firstName, lastName, email, password, confirmPassword }));
+        
     };
 
     return (

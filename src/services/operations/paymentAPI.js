@@ -93,7 +93,13 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
     // }
 
     toast.success("Payment successful!");
-    navigate("/profile");
+    if(!token) {
+      alert("Login to see your order history")
+      navigate("/auth");
+    } 
+    else {
+      navigate("/profile")
+    }
     // dispatch(resetCart());
   } catch (error) {
     console.log("Payment Verify ERROR:", error);

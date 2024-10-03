@@ -27,7 +27,7 @@ export default function Checkout() {
         state: "",
         pinCode: "",
         phoneNumber: "",
-        selectedWood: selectedWood
+        selectedWood: selectedWood, email:""
     });
     const calculateTotalPrice = () => {
         return cart.reduce((total, item) => total + item.price, 0);
@@ -82,12 +82,16 @@ export default function Checkout() {
         console.log("Formdata : ", formData)
         
 
+        if(!formData.email || !formData.phoneNumber) {
+            toast.error("Email and Whatsapp number is required");
+            return;
+        }
 
         if(!token) {
-            toast.error("You havn't login yet")
-            navigate("/auth")
+            alert("Warning: If you purchase without signing up, your default password will be set to 12345678")
         }
-        // dispatch(openCart(false))
+        dispatch(openCart(false))
+        
         await buy(token, allId, totalPrice,  formData,  navigate,); 
     };
 
@@ -110,6 +114,16 @@ export default function Checkout() {
                 </label>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label htmlFor="email" className="block">
+                        <input
+                            placeholder="Email "
+                            value={formData.email}
+                            name="email"
+                            type="text"
+                            onChange={handleChange}
+                            className="w-full border border-gray-300 rounded-md p-2"
+                        />
+                    </label>
                     <label htmlFor="firstName" className="block">
                         <input
                             placeholder="First Name (optional)"
@@ -200,7 +214,7 @@ export default function Checkout() {
 
                 <label htmlFor="phoneNumber" className="block">
                     <input
-                        placeholder="Phone Number"
+                        placeholder="Whatsapp Number"
                         value={formData.phoneNumber}
                         name="phoneNumber"
                         type="tel"

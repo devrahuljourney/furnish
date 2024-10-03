@@ -74,7 +74,7 @@ export default function ShopByRoom() {
         <div className='w-full flex flex-col md:flex-row justify-evenly items-center p-2 gap-6'>
           {/* Image and Title */}
           <div className='flex flex-col justify-center items-center'>
-            <img className='w-[300px] h-[300px] md:w-[400px] md:h-[400px]' src={currentImage} alt={productName} />
+            <img loading='lazy' className='w-[300px] h-[300px] md:w-[400px] md:h-[400px]' src={currentImage} alt={productName} />
             <p className='text-[13px] mt-2'>{productName}</p>
           </div>
 
