@@ -18,7 +18,7 @@ export default function Collection({ data }) {
             />
             <p className="mt-2 text-center text-sm">{Site_name}</p>
             <p className="text-center text-lg font-bold">{product.name}</p>
-            <p className="text-center font-bold text-md text-gray-700">From {product.price}</p>
+            <p className="text-center font-bold text-md text-gray-700">From ₹ {product.price.toLocaleString('en-IN')}</p>
           </Link>
         ))}
       </div>

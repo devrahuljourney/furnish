@@ -58,7 +58,8 @@ export default function Navmenu({data}) {
                   className="cursor-pointer py-2 hover:text-gray-700"
                   onClick={() => setHoveredCategory(hoveredCategory === index ? null : index)}
                 >
-                  {ele.name}
+                  {ele.name.charAt(0).toUpperCase() + ele.name.slice(1).toLowerCase()}
+
                 </p>
 
                 
@@ -71,7 +72,7 @@ export default function Navmenu({data}) {
                       to={`/collections/${sub.name}/${sub._id}`}
                       className="block px-4 py-1 hover:text-gray-500"
                     >
-                          {sub.name}
+                          {sub.name.charAt(0).toUpperCase() + sub.name.slice(1).toLowerCase()}
                         </Link>
                       </li>
                     ))}
@@ -98,7 +99,8 @@ export default function Navmenu({data}) {
               onMouseEnter={() => setHoveredCategory(index)}
               onMouseLeave={() => setHoveredCategory(null)}
             >
-              <p className="hover:text-gray-700 cursor-pointer">{ele.name.toLowerCase()}</p>
+              <p className="hover:text-gray-700 cursor-pointer">{ele.name.charAt(0).toUpperCase() + ele.name.slice(1).toLowerCase()}
+</p>
 
               {/* Subcategories on hover for desktop */}
               {hoveredCategory === index && (
@@ -109,7 +111,7 @@ export default function Navmenu({data}) {
                       to={`/collections/${sub.name}/${sub._id}`}
                       className="block px-4 py-1 hover:text-gray-500"
                     >
-                      {sub.name}
+                      {sub.name.charAt(0).toUpperCase() + sub.name.slice(1).toLowerCase()}
                     </Link>
                   ))}
                 </div>

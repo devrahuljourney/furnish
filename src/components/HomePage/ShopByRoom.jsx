@@ -81,7 +81,7 @@ export default function ShopByRoom() {
           {/* Product Information */}
           <div className='flex flex-col justify-center items-center gap-2'>
             <p className='text-[18px] md:text-[21px] font-semibold'>{productName}</p>
-            <p className='font-semibold text-[#6a6a8d]'>{productPrice}</p>
+            <p className='font-semibold text-[#6a6a8d]'>  {productPrice.toLocaleString('en-IN')}  </p>
 
             {/* View Product Button */}
             <Link to={`/product/${currentProduct.name}/${currentProduct._id}`}>

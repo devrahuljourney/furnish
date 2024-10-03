@@ -99,7 +99,7 @@ export default function Product({ product }) {
       {/* Product Details */}
       <div className='flex flex-col justify-start gap-4 md:w-1/3 p-4'>
         <p className='text-xl md:text-2xl font-bold'>{name}</p>
-        <p className='text-lg text-gray-500 font-semibold'>₹ {price}</p>
+        <p className='text-lg text-gray-500 font-semibold'>₹ {price.toLocaleString('en-IN')}</p>
         <p className='text-md'>{description}</p>
 
         {/* Size Selection */}
