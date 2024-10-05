@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
-import logo from "../assets/logo.avif"; 
+import lg from "../assets/lg.png"; 
 import Navmenu from './Navmenu';
 import { CiSearch } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
@@ -91,9 +91,9 @@ export default function Navbar() {
       {/* Navbar with categories */}
       <div className={`w-[100%] bg-blur-500 hover:bg-[#F6F0ED] flex justify-between items-center py-4 px-[5%] ${prevScrollPos === 0 ? "bg-transparent" : "bg-[#F6F0ED]"} ${visible ? "top-0" : "absolute -top-[200px]"}`}>
         {/* Logo */}
-        <div className="md:w-[20%] w-[40%] flex">
-          <img src={logo} alt="Logo" width="200px" height="auto" /> {/* Use auto for height to maintain aspect ratio */}
-        </div>
+        <Link to="/" className="md:w-[20%]  w-[40%] flex">
+          <img className=' md:absolute top-[25%] ' src={lg} alt="Logo" width="150px" height="auto" /> {/* Use auto for height to maintain aspect ratio */}
+        </Link>
 
         {/* Navigation links */}
         <div className='md:w-[60%] gap-3 flex md:flex-col flex-row md:justify-center justify-end w-[60%] md:items-center'>

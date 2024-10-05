@@ -90,7 +90,13 @@ export default function Checkout() {
         if(!token) {
             alert("Warning: If you purchase without signing up, your default password will be set to 12345678")
         }
-        dispatch(openCart(false))
+        if(byCart) {
+            if(cart.length === 0) {
+                toast.error("Cart is empty");
+                return;
+            }
+            dispatch(openCart())
+        }
         
         await buy(token, allId, totalPrice,  formData,  navigate,); 
     };
