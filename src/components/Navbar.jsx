@@ -64,7 +64,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className={`w-full fixed z-10`}>
+    <div className={`w-full overflow-y-hidden fixed z-10`}>
       {/* Offer banner */}
       <div className="flex h-[50px] bg-nav-banner-color px-[20%] justify-evenly items-center p-2 w-[100%]">
         <button
@@ -89,7 +89,7 @@ export default function Navbar() {
       </div>
 
       {/* Navbar with categories */}
-      <div className={`w-[100%] bg-blur-500 hover:bg-[#F6F0ED] flex justify-between items-center py-4 px-[5%] ${prevScrollPos === 0 ? "bg-transparent" : "bg-[#F6F0ED]"} ${visible ? "top-0" : "absolute -top-[200px]"}`}>
+      <div className={`w-[100%] bg-blur bg-[#F6F0ED] flex justify-between items-center py-4 px-[5%]  ${visible ? "top-0" : "absolute -top-[200px]"}`}>
         {/* Logo */}
         <Link to="/" className="md:w-[20%]  w-[40%] flex">
           <img className=' md:absolute top-[25%] ' src={lg} alt="Logo" width="150px" height="auto" /> {/* Use auto for height to maintain aspect ratio */}
