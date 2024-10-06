@@ -10,10 +10,10 @@ export default function FooterItems() {
                 <p className='text-[13px] '>About Us</p>
                 <div className=' flex flex-col gap-7 ' >
                     <div className='flex flex-col item-start justify-center' >
-                    <p className=' font-semibold uppercase text-[19px] ' >SHEKHAWATI ART EXPORT </p>
-                    <p className=' text-gray-500 text-[14px] ' >GSTIN:08BOHPJ1399M1ZC</p>
-                    <p className=' text-gray-500 text-[14px] '>G-1 C-85C Road NO-05 RICCO Industrial Area,</p>
-                    <p className=' text-gray-500 text-[14px] '>Churu (Raj.) 331001</p>
+                    {/* <p className=' font-semibold uppercase text-[19px] ' >SHEKHAWATI ART EXPORT </p>
+                    <p className=' text-gray-500 text-[14px] ' >GSTIN:08BOHPJ1399M1ZC</p> */}
+                    <p className=' text-gray-500 text-[14px] '>H-1-105, ROAD NO. 5 B, RICCO INDUSTRIAL AREA, CHURU,</p>
+                    <p className=' text-gray-500 text-[14px] '> RAJASTHAN - 331001</p>
                     </div>
 
                     <div className='flex flex-col item-start gap-3 justify-center' >
@@ -30,8 +30,8 @@ export default function FooterItems() {
             <div className='flex md:w-[25%] gap-2 w-full flex-col item-start justify-center'>
                 <p className=' text-[13px] ' >Contact Us for any assistance</p>
                 <div className='flex flex-col item-start justify-center' >
-                    <p className=' text-[14px] text-gray-400 ' >+91 70231-68022</p>
-                    <p className=' text-[14px] text-gray-400 '>support@ranbankafurnitures.com</p>
+                    <p className=' text-[14px] text-gray-400 ' >+91 90242 14525</p>
+                    <p className=' text-[14px] text-gray-400 '>ranbankafurnitures.com</p>
                 </div>
             </div>
             <div className='flex flex-col gap-2 md:w-[25%] w-full item-start justify-center'>
