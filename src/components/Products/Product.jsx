@@ -97,7 +97,7 @@ export default function Product({ product }) {
       </div>
 
       {/* Product Details */}
-      <div className='flex flex-col justify-start gap-4 md:w-1/3 p-4'>
+      <div className='flex flex-col justify-start gap-4  md:w-[45%] p-4'>
         <p className='text-xl md:text-2xl font-bold'>{name}</p>
         <p className='text-lg text-gray-500 font-semibold'>₹ {price.toLocaleString('en-IN')}</p>
         <p className='text-md'>{description}</p>
@@ -141,8 +141,11 @@ export default function Product({ product }) {
           <button onClick={handleAddToCart} className='button-48 cart'>ADD TO CART</button>
           <button onClick={buyNowHandler} className='button-48 buy'>BUY IT NOW</button>
         </div>
+        <div className='  ' >
         <Instructions />
+        </div>
       </div>
+      
     </div>
   );
 }

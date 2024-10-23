@@ -75,7 +75,7 @@ const Instructions = () => {
   };
 
   return (
-    <div className="w-full max-w-[800px] mx-auto p-4">
+    <div className="w-full h-full max-w-[800px] mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Product Information</h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (

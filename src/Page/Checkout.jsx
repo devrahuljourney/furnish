@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { fetchProductById } from '../services/operations/productAPI';
 import { Site_name, STATE_CHOICES } from '../data/dummyData';
-import { buy } from '../services/operations/paymentAPI'; // Adjust the import based on your file structure
+import { buy } from '../services/operations/paymentAPI'; 
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import CartProductRender from '../components/Cart/CartProductRender';
 import { openCart, resetCart } from '../slices/cartSlice';
+import { initializeSDK, getSessionId, verifyPayment, startPayment } from '../services/operations/cashfree';
+
 
 export default function Checkout() {
     const location = useLocation();
@@ -32,6 +34,11 @@ export default function Checkout() {
     const calculateTotalPrice = () => {
         return cart.reduce((total, item) => total + item.price, 0);
       };
+
+      const [orderId, setOrderId] = useState("");
+      useEffect(() => {
+        initializeSDK();
+      }, []);
 
 
     useEffect(() => {
@@ -97,8 +104,35 @@ export default function Checkout() {
             }
             dispatch(openCart())
         }
+
+        try {
+            const { sessionId, orderId } = await getSessionId(token, allId, totalPrice, formData);
+            if (sessionId) {
+                setOrderId(orderId);
+                
+    
+                console.log("Starting payment...");
+                await startPayment(sessionId);
+    
+                console.log("Verifying payment...");
+                await verifyPayment(orderId, token, allId, totalPrice, formData, navigate);
+    
+                
+                toast.success("Payment successful!");
+    
+            } else {
+                toast.error("Unable to start payment. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error during payment process:", error);
+            toast.error("An error occurred while processing the payment.");
+        } finally {
+            toast.dismiss(); 
+        }
         
-        await buy(token, allId, totalPrice,  formData,  navigate,); 
+        
+        
+        // await buy(token, allId, totalPrice,  formData,  navigate,); 
     };
 
     

@@ -35,7 +35,10 @@ export const searchEndpoints = {
 
 export const paymentEndpoints = {
     PAYMENT_ORDER : BASE_URL + "/payment/order",
-    PAYMENT_VERIFY : BASE_URL + "/payment/verifypayment"
+    PAYMENT_VERIFY : BASE_URL + "/payment/verifypayment",
+    CASHFREE_PAYMENT_ORDER : BASE_URL + "/payment/cashfree-order",
+    CASHFREE_PAYMENT_VERIFY : (orderId) => BASE_URL + `/payment/cashfree-verify/${orderId}`
+
 }
 
 export const orderEndpoints = {
