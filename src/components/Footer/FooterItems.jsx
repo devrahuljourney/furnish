@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaInstagram } from "react-icons/fa";
 import { CiFacebook } from "react-icons/ci";
+import { Link } from 'react-router-dom';
 
 export default function FooterItems() {
   return (
@@ -22,8 +23,8 @@ export default function FooterItems() {
                     </div>
 
                     <div className='flex flex-row gap-5 item-start justify-start' >
-                            <a href='#'> <CiFacebook style={{width:"30px", height:"30px"}} /> </a>
-                            <a href='#' > <FaInstagram  style={{width:"30px", height:"30px"}}  /> </a>
+                            <Link href='#'> <CiFacebook style={{width:"30px", height:"30px"}} /> </Li>
+                            <Link href='#' > <FaInstagram  style={{width:"30px", height:"30px"}}  /> </Link>
                     </div>
                 </div>
             </div>
@@ -44,14 +45,14 @@ export default function FooterItems() {
             <div className='flex md:w-[25%] gap-2 w-full flex-col item-start justify-center'>
                 <p className=' text-[13px] '>Quick Links</p>
                 <div className='flex flex-col item-start justify-center' >
-                    <a href='about-us' className=' text-[14px] text-gray-400 '> About Us </a>
-                    <a href='contact-us' className=' text-[14px] text-gray-400 '> Contact Us </a>
-                    <a href='legal-business' className=' text-[14px] text-gray-400 '> Legal Business </a>
-                    <a href='privacy-policy' className=' text-[14px] text-gray-400 '> Privacy policy </a>
-                    <a href='refund-policy' className=' text-[14px] text-gray-400 '> Refund Policy </a>
-                    <a href='shipping-policy' className=' text-[14px] text-gray-400 '> Shipping Policy </a>
-                    <a href='cancellation' className=' text-[14px] text-gray-400 '> Cancellation </a>
-                    <a href='term-condition' className=' text-[14px] text-gray-400 '> Term & Condition </a>
+                    <Link href='about-us' className=' text-[14px] text-gray-400 '> About Us </Link>
+                    <Link href='contact-us' className=' text-[14px] text-gray-400 '> Contact Us </Link>
+                    <Link href='legal-business' className=' text-[14px] text-gray-400 '> Legal Business </Link>
+                    <Link href='privacy-policy' className=' text-[14px] text-gray-400 '> Privacy policy </Link>
+                    <Link href='refund-policy' className=' text-[14px] text-gray-400 '> Refund Policy </Link>
+                    <Link href='shipping-policy' className=' text-[14px] text-gray-400 '> Shipping Policy </Link>
+                    <Link href='cancellation' className=' text-[14px] text-gray-400 '> Cancellation </Link>
+                    <Link href='term-condition' className=' text-[14px] text-gray-400 '> Term & Condition </Link>
 
 
                 </div>
