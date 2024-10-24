@@ -1,8 +1,10 @@
 import React from 'react';
+import Footer from './Footer';
 
 const AboutUs = () => {
     return (
-        <div className="max-w-3xl md:mt-[13%] mt-[50%] mx-auto p-6 bg-white shadow-md rounded-md ">
+        <>
+            <div className="max-w-3xl md:mt-[13%] mt-[50%] mx-auto p-6 bg-white shadow-md rounded-md ">
             <h1 className="text-3xl font-bold mb-4 text-center">About Us</h1>
             <p className="text-gray-700 mb-4">
                 Welcome to <strong>Ranbanka Furniture!</strong>
@@ -27,6 +29,8 @@ const AboutUs = () => {
                 Join us on this journey of creativity and style. Let’s create beautiful spaces together!
             </p>
         </div>
+        <Footer/>
+        </>
     );
 };
 

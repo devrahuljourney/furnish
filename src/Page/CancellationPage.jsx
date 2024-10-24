@@ -1,6 +1,9 @@
+import Footer from "./Footer";
+
 const CancellationPolicy = () => {
     return (
-        <div className="container mx-auto p-6 md:mt-[13%] mt-[50%] ">
+        <>
+            <div className="container mx-auto p-6 md:mt-[13%] mt-[50%] ">
             <h1 className="text-3xl font-bold mb-4">Cancellation Policy</h1>
             <p className="text-gray-700 mb-4">
                 At Ranbank Furniture, we strive to provide our customers with a seamless shopping experience. We understand that sometimes you may need to cancel an order, and we aim to accommodate your needs to the best of our ability. Please review our cancellation policy outlined below:
@@ -47,6 +50,8 @@ const CancellationPolicy = () => {
                 Thank you for choosing Ranbank Furniture for your shopping needs. We appreciate your business!
             </p>
         </div>
+        <Footer/>
+        </>
     );
 };
 

@@ -1,6 +1,9 @@
+import Footer from "./Footer";
+
 const ShippingPolicy = () => {
     return (
-        <div className="container mx-auto p-6 mt-[50%] md:mt-[13%]" >
+        <>
+            <div className="container mx-auto p-6 mt-[50%] md:mt-[13%]" >
             <h1 className="text-3xl font-bold mb-4">Shipping Policy</h1>
             <p className="text-gray-700 mb-4">
                 At Ranbank Furniture, we partner with trusted logistics companies, Bluedart and Delhivery, to ensure that your orders are delivered promptly across India.
@@ -17,6 +20,8 @@ const ShippingPolicy = () => {
                 If you have any questions about our shipping policy, feel free to reach out to our customer service team.
             </p>
         </div>
+        <Footer/>
+        </>
     );
 };
 

@@ -1,8 +1,10 @@
 import React from 'react';
+import Footer from './Footer';
 
 const PrivacyPolicy = () => {
     return (
-        <div className="max-w-3xl mt-[50%] md:mt-[13%] mx-auto p-6 bg-white shadow-md rounded-md ">
+        <>
+            <div className="max-w-3xl mt-[50%] md:mt-[13%] mx-auto p-6 bg-white shadow-md rounded-md ">
             <h1 className="text-3xl font-bold mb-4 text-center">Privacy Policy</h1>
             <p className="text-gray-700 mb-4">
                 Effective Date: <strong>October 24, 2024</strong>
@@ -70,6 +72,8 @@ const PrivacyPolicy = () => {
                 Phone: <a href="tel:+1234567890" className="text-blue-500">+91 90242 14525</a>
             </p>
         </div>
+        <Footer/>
+        </>
     );
 };
 

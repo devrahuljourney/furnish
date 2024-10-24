@@ -1,8 +1,10 @@
 import React from 'react';
+import Footer from './Footer';
 
 const LegalBusinessInfo = () => {
     return (
-        <div className="container mx-auto p-5  mt-[50%] md:mt-[13%] ">
+        <>
+            <div className="container mx-auto p-5  mt-[50%] md:mt-[13%] ">
             <h1 className="text-3xl font-bold mb-4">Legal Information</h1>
             
             <h2 className="text-2xl font-semibold mb-2">Company Name</h2>
@@ -23,6 +25,8 @@ const LegalBusinessInfo = () => {
 
             
         </div>
+        <Footer/>
+        </>
     );
 };
 

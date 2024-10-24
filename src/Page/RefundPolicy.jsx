@@ -1,8 +1,10 @@
 import React from 'react';
+import Footer from './Footer';
 
 const RefundPolicy = () => {
     return (
-        <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md md:mt-[13%] mt-[50%] ">
+        <>
+            <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md md:mt-[13%] mt-[50%] ">
             <h1 className="text-3xl font-bold mb-4 text-center">Refund Policy</h1>
 
             <h2 className="text-2xl font-semibold mb-2">Returns</h2>
@@ -50,6 +52,8 @@ const RefundPolicy = () => {
                 Phone: <a href="tel:+1234567890" className="text-blue-500">+1 (234) 567-890</a>
             </p>
         </div>
+        <Footer/>
+        </>
     );
 };
 

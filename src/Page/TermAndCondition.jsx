@@ -1,6 +1,9 @@
+import Footer from "./Footer";
+
 const TermsAndConditions = () => {
     return (
-        <div className="container mx-auto p-6 mt-[50%] md:mt-[13%] ">
+        <>
+            <div className="container mx-auto p-6 mt-[50%] md:mt-[13%] ">
             <h1 className="text-3xl font-bold mb-4">Terms and Conditions</h1>
             <p className="text-gray-700 mb-4">
                 Welcome to Ranbank Furniture! These Terms and Conditions outline the rules and regulations for the use of our website and services. By accessing or using our website, you agree to comply with these terms. If you do not agree with any part of these terms, please do not use our website.
@@ -63,6 +66,8 @@ const TermsAndConditions = () => {
                 Thank you for choosing Ranbank Furniture. We appreciate your business!
             </p>
         </div>
+        <Footer/>
+        </>
     );
 };
 

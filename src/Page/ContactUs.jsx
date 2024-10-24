@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { contactUsApi } from '../services/operations/contactUs';
+import Footer from './Footer';
 
 const ContactUsForm = () => {
     const [formData, setFormData] = useState({
@@ -30,7 +31,8 @@ const ContactUsForm = () => {
     };
 
     return (
-        <div className="max-w-lg md:mt-[10%] mt-[30%] mx-auto p-8 bg-gray-50 shadow-lg rounded-lg">
+        <>
+            <div className="max-w-lg md:mt-[10%] mt-[30%] mx-auto p-8 bg-gray-50 shadow-lg rounded-lg">
             <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Contact Us</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-6">
@@ -83,6 +85,8 @@ const ContactUsForm = () => {
                 </button>
             </form>
         </div>
+        <Footer/>
+        </>
     );
 };
 
