@@ -45,3 +45,7 @@ export const orderEndpoints = {
     GET_ALL_ORDER : BASE_URL + `/order/getallorder`
     
 }
+
+export const contactUs = {
+    CONTACT_US : BASE_URL + "/contact/contact-us"
+}

@@ -31,7 +31,7 @@ export default function FooterItems() {
                 <p className=' text-[13px] ' >Contact Us for any assistance</p>
                 <div className='flex flex-col item-start justify-center' >
                     <p className=' text-[14px] text-gray-400 ' >+91 90242 14525</p>
-                    <p className=' text-[14px] text-gray-400 '>ranbankafurnitures.com</p>
+                    <p className=' text-[14px] text-gray-400 '>weplayindia.gg@gmail.com</p>
                 </div>
             </div>
             <div className='flex flex-col gap-2 md:w-[25%] w-full item-start justify-center'>
@@ -44,13 +44,15 @@ export default function FooterItems() {
             <div className='flex md:w-[25%] gap-2 w-full flex-col item-start justify-center'>
                 <p className=' text-[13px] '>Quick Links</p>
                 <div className='flex flex-col item-start justify-center' >
-                    <a href='#' className=' text-[14px] text-gray-400 '> About Us </a>
-                    <a href='#' className=' text-[14px] text-gray-400 '> Contact Us </a>
-                    <a href='#' className=' text-[14px] text-gray-400 '> Legal Business </a>
-                    <a href='#' className=' text-[14px] text-gray-400 '> Privacy policy </a>
-                    <a href='#' className=' text-[14px] text-gray-400 '> Refund Policy </a>
-                    <a href='#' className=' text-[14px] text-gray-400 '> Shipping Policy </a>
-                    <a href='#' className=' text-[14px] text-gray-400 '> Canellation </a>
+                    <a href='about-us' className=' text-[14px] text-gray-400 '> About Us </a>
+                    <a href='contact-us' className=' text-[14px] text-gray-400 '> Contact Us </a>
+                    <a href='legal-business' className=' text-[14px] text-gray-400 '> Legal Business </a>
+                    <a href='privacy-policy' className=' text-[14px] text-gray-400 '> Privacy policy </a>
+                    <a href='refund-policy' className=' text-[14px] text-gray-400 '> Refund Policy </a>
+                    <a href='shipping-policy' className=' text-[14px] text-gray-400 '> Shipping Policy </a>
+                    <a href='cancellation' className=' text-[14px] text-gray-400 '> Cancellation </a>
+                    <a href='term-condition' className=' text-[14px] text-gray-400 '> Term & Condition </a>
+
 
                 </div>
             </div>
