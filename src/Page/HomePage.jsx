@@ -7,7 +7,7 @@ import PaymentComponent from '../test/test'
 
 export default function HomePage() {
   return (
-    <div className='w-full h-full mt-[11%]'>
+    <div className='w-full overflow-x-hidden h-full mt-[11%]'>
     
         <Banner/>
         <FeatureCategory/>

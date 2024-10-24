@@ -73,7 +73,7 @@ export default function Navmenu({ data }) {
             </button>
           </div>
 
-          <form onSubmit={submitHandler} className=' flex flex-row justify-between items-center py-1 border-2 border-black rounded-lg px-4 w-[80%]'>
+          <form onSubmit={submitHandler} className=' md:flex flex-row justify-between items-center py-1 border-2 border-black rounded-lg px-4 w-[80%]'>
             <input
               onChange={(e) => setSearchData(e.target.value)}
               name="search"

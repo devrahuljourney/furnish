@@ -1,3 +1,4 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -22,39 +23,36 @@ import TermsAndConditions from './Page/TermAndCondition';
 import LegalBusinessInfo from './Page/LegalBusiness';
 
 function App() {
+  const { cartOpen } = useSelector((state) => state.cart);
 
-  const {cartOpen} = useSelector((state) => state.cart)
   return (
-    <div className="App">
-        <Navbar/>
-        <Routes>
-          <Route path="/" element={<HomePage/>} />
-          <Route path={`/collections/:subcategory/:id`} element={<Collections/>} />
-          <Route path={`/product/:title/:id`}  element ={<Products/>} /> 
-          <Route path={`/checkout`} element = { <Checkout/>  } />
-          <Route path="/search" element={ <Search/> } />
-          <Route path="/auth" element={ <AuthTabs/> } />
-          <Route path='/profile' element={<Profile/>} />
-          <Route path='/contact-us' element={<ContactUsForm/>} />
-          <Route path='/about-us' element={<AboutUs/>} />
-          <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
-          <Route path='/refund-policy' element={<RefundPolicy/>} />
-          <Route path='/shipping-policy' element={<ShippingPolicy/>} />
-          <Route path='/cancellation' element={<CancellationPolicy/>} />
-          <Route path='/term-condition' element={<TermsAndConditions/>} />
-          <Route path='/legal-business' element={<LegalBusinessInfo/>} />
+    <div className="App overflow-x-hidden w-full">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path={`/collections/:subcategory/:id`} element={<Collections />} />
+        <Route path={`/product/:title/:id`} element={<Products />} />
+        <Route path={`/checkout`} element={<Checkout />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/auth" element={<AuthTabs />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/contact-us' element={<ContactUsForm />} />
+        <Route path='/about-us' element={<AboutUs />} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+        <Route path='/refund-policy' element={<RefundPolicy />} />
+        <Route path='/shipping-policy' element={<ShippingPolicy />} />
+        <Route path='/cancellation' element={<CancellationPolicy />} />
+        <Route path='/term-condition' element={<TermsAndConditions />} />
+        <Route path='/legal-business' element={<LegalBusinessInfo />} />
+      </Routes>
 
-
-
-
-
-
-
-
-
-
-        </Routes>
-        <div className={`absolute top-0 right-0 p-4 md:mt-[12%] mt-[50%] bg-nav-banner-color transition-transform duration-250 ease-in ${cartOpen ? 'translate-x-0' : 'translate-x-full'} md:w-1/4 w-full h-full`}>
+      {/* Cart Sidebar */}
+      <div 
+        className={`fixed top-0 right-0 transition-transform duration-300 ease-in-out bg-nav-banner-color h-full md:w-1/3 w-[70%] p-4
+          ${cartOpen ? 'translate-x-0' : 'translate-x-full'}`
+        }
+        style={{ zIndex: 1000 }}
+      >
         <Cart />
       </div>
     </div>

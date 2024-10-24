@@ -64,7 +64,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className={`w-full overflow-y-hidden fixed z-10`}>
+    <div className={`w-full overflow-x-hidden overflow-y-hidden fixed z-10`}>
       {/* Offer banner */}
       <div className="flex h-[50px] bg-nav-banner-color px-[20%] justify-evenly items-center p-2 w-[100%]">
         <button
@@ -97,6 +97,7 @@ export default function Navbar() {
 
         {/* Navigation links */}
         <div className='md:w-[60%]  gap-3 flex md:flex-col flex-row md:justify-center justify-end w-[60%] md:items-center'>
+          <div className=' w-full md:block hidden ' >
           <form onSubmit={submitHandler} className=' md:flex hidden flex-row justify-between items-center py-1 border-2 border-black rounded-lg px-4 w-[80%]'>
             <input
               onChange={(e) => setSearchData(e.target.value)}
@@ -109,6 +110,7 @@ export default function Navbar() {
               <CiSearch />
             </button>
           </form>
+          </div>
           <div className='md:relative absolute right-0 top-[45%]'>
             <Navmenu data={categoriesData} />
           </div>
