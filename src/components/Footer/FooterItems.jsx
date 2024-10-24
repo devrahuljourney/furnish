@@ -23,8 +23,8 @@ export default function FooterItems() {
                     </div>
 
                     <div className='flex flex-row gap-5 item-start justify-start' >
-                            <Link href='#'> <CiFacebook style={{width:"30px", height:"30px"}} /> </Li>
-                            <Link href='#' > <FaInstagram  style={{width:"30px", height:"30px"}}  /> </Link>
+                            <Link to='#'> <CiFacebook style={{width:"30px", height:"30px"}} /> </Link>
+                            <Link to='#' > <FaInstagram  style={{width:"30px", height:"30px"}}  /> </Link>
                     </div>
                 </div>
             </div>
@@ -43,16 +43,16 @@ export default function FooterItems() {
                 </div>
             </div>
             <div className='flex md:w-[25%] gap-2 w-full flex-col item-start justify-center'>
-                <p className=' text-[13px] '>Quick Links</p>
+                <p className=' text-[to] '>Quick Links</p>
                 <div className='flex flex-col item-start justify-center' >
-                    <Link href='about-us' className=' text-[14px] text-gray-400 '> About Us </Link>
-                    <Link href='contact-us' className=' text-[14px] text-gray-400 '> Contact Us </Link>
-                    <Link href='legal-business' className=' text-[14px] text-gray-400 '> Legal Business </Link>
-                    <Link href='privacy-policy' className=' text-[14px] text-gray-400 '> Privacy policy </Link>
-                    <Link href='refund-policy' className=' text-[14px] text-gray-400 '> Refund Policy </Link>
-                    <Link href='shipping-policy' className=' text-[14px] text-gray-400 '> Shipping Policy </Link>
-                    <Link href='cancellation' className=' text-[14px] text-gray-400 '> Cancellation </Link>
-                    <Link href='term-condition' className=' text-[14px] text-gray-400 '> Term & Condition </Link>
+                    <Link to='about-us' className=' text-[14px] text-gray-400 '> About Us </Link>
+                    <Link to='contact-us' className=' text-[14px] text-gray-400 '> Contact Us </Link>
+                    <Link to='legal-business' className=' text-[14px] text-gray-400 '> Legal Business </Link>
+                    <Link to='privacy-policy' className=' text-[14px] text-gray-400 '> Privacy policy </Link>
+                    <Link to='refund-policy' className=' text-[14px] text-gray-400 '> Refund Policy </Link>
+                    <Link to='shipping-policy' className=' text-[14px] text-gray-400 '> Shipping Policy </Link>
+                    <Link to='cancellation' className=' text-[14px] text-gray-400 '> Cancellation </Link>
+                    <Link to='term-condition' className=' text-[14px] text-gray-400 '> Term & Condition </Link>
 
 
                 </div>
