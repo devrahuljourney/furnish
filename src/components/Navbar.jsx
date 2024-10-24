@@ -91,13 +91,13 @@ export default function Navbar() {
       {/* Navbar with categories */}
       <div className={`w-[100%] bg-blur bg-[#F6F0ED] flex justify-between items-center py-4 px-[5%]  ${visible ? "top-0" : "absolute -top-[200px]"}`}>
         {/* Logo */}
-        <Link to="/" className="md:w-[20%]  w-[40%] flex">
+        <Link to="/" className="md:w-[20%]  w-[20%] flex">
           <img className=' md:absolute top-[25%] ' src={lg} alt="Logo" width="150px" height="auto" /> {/* Use auto for height to maintain aspect ratio */}
         </Link>
 
         {/* Navigation links */}
-        <div className='md:w-[60%] gap-3 flex md:flex-col flex-row md:justify-center justify-end w-[60%] md:items-center'>
-          <form onSubmit={submitHandler} className='flex flex-row justify-between items-center py-1 border-2 border-black rounded-lg px-4 w-[80%]'>
+        <div className='md:w-[60%]  gap-3 flex md:flex-col flex-row md:justify-center justify-end w-[60%] md:items-center'>
+          <form onSubmit={submitHandler} className=' md:flex hidden flex-row justify-between items-center py-1 border-2 border-black rounded-lg px-4 w-[80%]'>
             <input
               onChange={(e) => setSearchData(e.target.value)}
               name="search"
@@ -114,7 +114,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className='flex w-[20%] justify-evenly p-9'>
+        <div className='md:flex hidden w-[20%] justify-evenly p-9'>
           {
             token === null ? (<Link to={"/auth"}>
             <CiUser style={{ width: "22px", height: "22px" }} />

@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { IoCartOutline } from "react-icons/io5";
 import { openCart } from '../slices/cartSlice';
 import { CiUser } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
+import { searchAllProduct } from '../services/operations/searchAPI';
+import { CiSearch } from "react-icons/ci";
+
 export default function Navmenu({ data }) {
   const dispatch = useDispatch();
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -26,6 +29,15 @@ export default function Navmenu({ data }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [menuRef]);
+  const [searchData, setSearchData] = useState([]);
+  
+
+  const navigate = useNavigate();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    navigate(`/search?q=${searchData}`)
+  };
 
   return (
     <nav className="relative">
@@ -60,6 +72,19 @@ export default function Navmenu({ data }) {
               <IoCartOutline style={{ width: '25px', height: '25px' }} />
             </button>
           </div>
+
+          <form onSubmit={submitHandler} className=' flex flex-row justify-between items-center py-1 border-2 border-black rounded-lg px-4 w-[80%]'>
+            <input
+              onChange={(e) => setSearchData(e.target.value)}
+              name="search"
+              value={searchData}
+              placeholder='Find your Design'
+              className='w-[80%] hover:bg-[#F6F0ED] bg-transparent focus:outline-none'
+            />
+            <button type='submit' className='w-[20%] flex justify-center items-center'>
+              <CiSearch />
+            </button>
+          </form>
           <li>
             <Link onClick={() => setMenuOpen(false)} to="/" className="block py-2 hover:text-gray-700" onClick={() => setMenuOpen(false)}>
               Home
